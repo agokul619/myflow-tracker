@@ -1,0 +1,56 @@
+[
+  {
+    "date": "2025-11-05",
+    "symptoms": {"tic_count": 7},
+    "journal": "",
+    "social": {"social_conflict": false},
+    "emotional": {"stress": 5},
+    "custom": [
+      {
+        "level": 5,
+        "effect": -1,
+        "name": "Meditation"
+      },
+      {
+        "level": 2,
+        "effect": -1,
+        "name": "Listening to music"
+      },
+      {
+        "level": 3,
+        "effect": 1,
+        "name": "coding"
+      }
+    ],
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 360},
+    "physiological": {"sleep_hours": 8}
+  },
+  {
+    "date": "2025-11-06",
+    "symptoms": {"tic_count": 4},
+    "journal": "",
+    "social": {"social_conflict": false},
+    "emotional": {"stress": 6},
+    "custom": [
+      {
+        "level": 5,
+        "effect": -1,
+        "name": "Meditation"
+      },
+      {
+        "level": 2,
+        "effect": -1,
+        "name": "Listening to music"
+      },
+      {
+        "level": 3,
+        "effect": 1,
+        "name": "coding"
+      }
+    ],
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 600},
+    "physiological": {"sleep_hours": 7.5}
+  }
+]
