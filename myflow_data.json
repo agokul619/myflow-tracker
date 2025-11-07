@@ -52,5 +52,42 @@
     "screen": {"screen_time_hours": 1},
     "cognitive_load": {"study_minutes": 600},
     "physiological": {"sleep_hours": 7.5}
+  },
+  {
+    "date": "2025-11-07",
+    "symptoms": {"tic_count": 5},
+    "journal": "",
+    "social": {"social_conflict": false},
+    "emotional": {"stress": 5},
+    "custom": [
+      {
+        "level": 5,
+        "effect": -1,
+        "name": "Meditation"
+      },
+      {
+        "level": 3,
+        "effect": -1,
+        "name": "Music"
+      }
+    ],
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 0},
+    "physiological": {"sleep_hours": 7.5}
+  },
+  {
+    "date": "2025-11-08",
+    "symptoms": {"tic_count": 0},
+    "journal": "",
+    "social": {"social_conflict": false},
+    "emotional": {"stress": 0},
+    "custom": [{
+      "level": 5,
+      "effect": -1,
+      "name": "Meditation"
+    }],
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 0},
+    "physiological": {"sleep_hours": 7.5}
   }
 ]
