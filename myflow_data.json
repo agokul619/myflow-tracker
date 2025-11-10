@@ -1,5 +1,64 @@
 [
   {
+    "date": "2025-11-02",
+    "symptoms": {"tic_count": 7},
+    "journal": "",
+    "social": {"social_conflict": false},
+    "emotional": {"stress": 4},
+    "custom": [{
+      "level": 1,
+      "effect": -1,
+      "name": "Singing"
+    }],
+    "screen": {"screen_time_hours": 2.2},
+    "cognitive_load": {"study_minutes": 360},
+    "physiological": {"sleep_hours": 8}
+  },
+  {
+    "date": "2025-11-03",
+    "symptoms": {"tic_count": 5},
+    "journal": "",
+    "social": {"social_conflict": false},
+    "emotional": {"stress": 2},
+    "custom": [
+      {
+        "level": 5,
+        "effect": 1,
+        "name": "Taking JAVA test today"
+      },
+      {
+        "level": 2,
+        "effect": -1,
+        "name": "going for car drive w/ parents"
+      }
+    ],
+    "screen": {"screen_time_hours": 2.5},
+    "cognitive_load": {"study_minutes": 660},
+    "physiological": {"sleep_hours": 6.5}
+  },
+  {
+    "date": "2025-11-04",
+    "symptoms": {"tic_count": 9},
+    "journal": "",
+    "social": {"social_conflict": false},
+    "emotional": {"stress": 2},
+    "custom": [
+      {
+        "level": 3,
+        "effect": 1,
+        "name": "Studying for Java test"
+      },
+      {
+        "level": 3,
+        "effect": -1,
+        "name": "CHnage of place"
+      }
+    ],
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 600},
+    "physiological": {"sleep_hours": 7.5}
+  },
+  {
     "date": "2025-11-05",
     "symptoms": {"tic_count": 7},
     "journal": "",
@@ -77,17 +136,86 @@
   },
   {
     "date": "2025-11-08",
-    "symptoms": {"tic_count": 0},
+    "symptoms": {"tic_count": 4},
     "journal": "",
     "social": {"social_conflict": false},
-    "emotional": {"stress": 0},
+    "emotional": {"stress": 3},
+    "custom": [
+      {
+        "level": 5,
+        "effect": -1,
+        "name": "Meditation"
+      },
+      {
+        "level": 3,
+        "effect": -1,
+        "name": "Listening to Music"
+      },
+      {
+        "level": 3,
+        "effect": -1,
+        "name": "grass"
+      },
+      {
+        "level": 5,
+        "effect": -1,
+        "name": "change of place for studying"
+      }
+    ],
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 420},
+    "physiological": {"sleep_hours": 8}
+  },
+  {
+    "date": "2025-11-09",
+    "symptoms": {"tic_count": 2},
+    "journal": "",
+    "social": {"social_conflict": false},
+    "emotional": {"stress": 2},
+    "custom": [
+      {
+        "level": 3,
+        "effect": -1,
+        "name": "Singing"
+      },
+      {
+        "level": 5,
+        "effect": 1,
+        "name": "Thought loop"
+      }
+    ],
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 540},
+    "physiological": {"sleep_hours": 7.5}
+  },
+  {
+    "date": "2025-11-11",
+    "symptoms": {"tic_count": 1},
+    "journal": "",
+    "social": {"social_conflict": false},
+    "emotional": {"stress": 5},
     "custom": [{
-      "level": 5,
+      "level": 2,
       "effect": -1,
-      "name": "Meditation"
+      "name": "Going for a drive"
     }],
     "screen": {"screen_time_hours": 1},
-    "cognitive_load": {"study_minutes": 0},
+    "cognitive_load": {"study_minutes": 420},
+    "physiological": {"sleep_hours": 6.5}
+  },
+  {
+    "date": "2025-11-13",
+    "symptoms": {"tic_count": 2},
+    "journal": "",
+    "social": {"social_conflict": false},
+    "emotional": {"stress": 2},
+    "custom": [{
+      "level": 4,
+      "effect": 1,
+      "name": "Coding for test in APCSA"
+    }],
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 480},
     "physiological": {"sleep_hours": 7.5}
   }
 ]

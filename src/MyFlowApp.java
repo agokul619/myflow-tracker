@@ -21,7 +21,7 @@ public class MyFlowApp extends JFrame {
     }
     
     private void initializeUI() {
-        setTitle("MyFlow - Mental Health Fitness Tracker");
+        setTitle("MyFlow - Track How You're Feeling");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(900, 800);
         setLocationRelativeTo(null);
@@ -39,19 +39,22 @@ public class MyFlowApp extends JFrame {
         
         // Tab 1: Daily Log Entry
         logPanel = new DailyLogPanel(this::onSaveData);
-        tabbedPane.addTab("📝 Daily Log", logPanel);
+        tabbedPane.addTab("📝 Today's Check-In", logPanel);
         
         // Tab 2: Diagnostics
         diagnosticsPanel = new DiagnosticsPanel(this::onRunDiagnostics);
-        tabbedPane.addTab("📊 Diagnostics", diagnosticsPanel);
+        tabbedPane.addTab("📊 My Patterns", diagnosticsPanel);
         
         add(tabbedPane, BorderLayout.CENTER);
         
-        // Status bar at bottom
-        statusLabel = new JLabel(dataManager.getDataStats());
-        statusLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
-        statusLabel.setFont(new Font("Arial", Font.PLAIN, 11));
-        statusLabel.setForeground(Color.GRAY);
+     // Status bar at bottom
+        statusLabel = new JLabel(dataManager.getDataStats(), SwingConstants.LEFT);
+        statusLabel.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createMatteBorder(1, 0, 0, 0, new Color(220, 220, 220)), // Light top border
+            BorderFactory.createEmptyBorder(8, 15, 8, 15) // Internal padding
+        ));
+        statusLabel.setFont(new Font("Arial", Font.PLAIN, 12)); // Slightly larger font
+        statusLabel.setForeground(new Color(100, 100, 100)); // Darker gray text
         add(statusLabel, BorderLayout.SOUTH);
         
         // Apply modern look and feel
@@ -64,29 +67,87 @@ public class MyFlowApp extends JFrame {
     
     private JPanel createHeaderPanel() {
         JPanel panel = new JPanel(new BorderLayout());
-        panel.setBackground(new Color(67, 170, 139)); // Teal from your design
-        panel.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
+        // Use a slightly darker teal/green for contrast against the light content area
+        panel.setBackground(new Color(55, 150, 110)); 
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 25, 20, 25)); // Increased padding
         
-        JLabel titleLabel = new JLabel("MyFlow Daily Log");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        titleLabel.setForeground(Color.WHITE);
+        // Left side: Logo + App Name + Tagline
+        JPanel leftPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 0)); // Increased gap
+        leftPanel.setOpaque(false);
         
-        JLabel subtitleLabel = new JLabel("Capture your fixed metrics and personalized factors");
-        subtitleLabel.setFont(new Font("Arial", Font.PLAIN, 12));
-        subtitleLabel.setForeground(new Color(230, 255, 245));
+        // --- 1. Streamlined Logo Loading ---
         
-        JPanel textPanel = new JPanel(new GridLayout(2, 1));
+        JLabel logoLabel = new JLabel("💗"); // Default emoji fallback
+        final int LOGO_SIZE = 55; // Smaller logo for the header
+        
+        try {
+            // Simplified logic: try relative path first, then src path
+            String[] logoPaths = {"logo.png", "src/logo.png"};
+            ImageIcon logoIcon = null;
+            
+            for (String path : logoPaths) {
+                java.io.File logoFile = new java.io.File(path);
+                if (logoFile.exists() && logoFile.canRead()) {
+                    logoIcon = new ImageIcon(logoFile.getAbsolutePath());
+                    if (logoIcon.getIconWidth() > 0) {
+                        Image img = logoIcon.getImage().getScaledInstance(LOGO_SIZE, LOGO_SIZE, Image.SCALE_SMOOTH);
+                        logoLabel = new JLabel(new ImageIcon(img));
+                        break;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            // If loading fails, keep the emoji fallback
+        }
+        
+        // If logo is still the emoji, use a larger font
+     // If the logo was not successfully loaded (i.e., it still has the emoji text)
+        // or if it doesn't have an icon, apply the larger font to the emoji.
+        if (logoLabel.getIcon() == null) {
+             logoLabel.setFont(new Font("Arial", Font.PLAIN, 40));
+        }
+
+        leftPanel.add(logoLabel);
+        
+        // --- 2. Text Panel Refinement ---
+        
+        JPanel textPanel = new JPanel();
+        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
         textPanel.setOpaque(false);
-        textPanel.add(titleLabel);
-        textPanel.add(subtitleLabel);
         
-        panel.add(textPanel, BorderLayout.WEST);
+        JLabel appNameLabel = new JLabel("MyFlow");
+        appNameLabel.setFont(new Font("Arial", Font.BOLD, 36)); // Slightly bigger app name
+        appNameLabel.setForeground(Color.WHITE);
+        
+        // Combined Title and Subtitle for a cleaner look
+        JLabel mainTitleLabel = new JLabel("Track your feelings and what's happening in your life");
+        mainTitleLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        mainTitleLabel.setForeground(new Color(200, 230, 215)); // Light gray-green
+        
+        textPanel.add(appNameLabel);
+        textPanel.add(Box.createVerticalStrut(2));
+        textPanel.add(mainTitleLabel);
+        
+        leftPanel.add(textPanel);
+        panel.add(leftPanel, BorderLayout.WEST);
+        
+        // Right side: Placeholder for user profile/settings button
+        JButton settingsButton = new JButton("👤");
+        settingsButton.setFont(new Font("Arial", Font.PLAIN, 20));
+        settingsButton.setToolTipText("Settings and Profile");
+        settingsButton.setBackground(new Color(80, 180, 140));
+        settingsButton.setForeground(Color.WHITE);
+        settingsButton.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
+        settingsButton.setFocusPainted(false);
+        settingsButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        rightPanel.setOpaque(false);
+        rightPanel.add(settingsButton);
+        panel.add(rightPanel, BorderLayout.EAST);
         
         return panel;
     }
-    
-    // === CALLBACK METHODS ===
-    
     /**
      * Called when user clicks "Save Data" button
      */
@@ -95,19 +156,16 @@ public class MyFlowApp extends JFrame {
         
         if (success) {
             JOptionPane.showMessageDialog(this,
-                "✓ Data saved successfully for " + log.getDate(),
-                "Success",
+                "✓ Your check-in was saved for " + log.getDate(),
+                "Saved!",
                 JOptionPane.INFORMATION_MESSAGE);
             
             // Update status bar
             statusLabel.setText(dataManager.getDataStats());
             
-            // Optionally clear the form or load next date
-            logPanel.loadNextDay();
-            
         } else {
             JOptionPane.showMessageDialog(this,
-                "Failed to save data. Please try again.",
+                "Oops! Something went wrong. Please try saving again.",
                 "Error",
                 JOptionPane.ERROR_MESSAGE);
         }
@@ -122,10 +180,10 @@ public class MyFlowApp extends JFrame {
         
         if (logs.size() < 7) {
             JOptionPane.showMessageDialog(this,
-                "Insufficient data for analysis.\n" +
-                "You need at least 7 days of data for baseline calculation.\n" +
-                "Current data points: " + logs.size(),
-                "Insufficient Data",
+                "You need more check-ins to see your patterns.\n" +
+                "Keep tracking for at least 7 days to get helpful insights.\n" +
+                "You have " + logs.size() + " days so far - keep it up!",
+                "Not Quite Ready",
                 JOptionPane.WARNING_MESSAGE);
             return;
         }
@@ -166,10 +224,10 @@ public class MyFlowApp extends JFrame {
                 
                 if (errorMessage != null) {
                     JOptionPane.showMessageDialog(MyFlowApp.this,
-                        "Error running diagnostics:\n" + errorMessage +
-                        "\n\nMake sure the Python service is running:\n" +
+                        "Something went wrong while looking at your patterns:\n" + errorMessage +
+                        "\n\nMake sure the helper program is running:\n" +
                         "python server.py",
-                        "Analysis Error",
+                        "Oops!",
                         JOptionPane.ERROR_MESSAGE);
                 }
             }
@@ -179,7 +237,7 @@ public class MyFlowApp extends JFrame {
     }
     
     private JDialog createLoadingDialog() {
-        JDialog dialog = new JDialog(this, "Running Analysis", true);
+        JDialog dialog = new JDialog(this, "Looking at Your Patterns", true);
         dialog.setLayout(new BorderLayout(20, 20));
         dialog.setSize(300, 150);
         dialog.setLocationRelativeTo(this);
@@ -187,7 +245,7 @@ public class MyFlowApp extends JFrame {
         JPanel panel = new JPanel(new GridLayout(2, 1, 10, 10));
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         
-        JLabel label = new JLabel("Analyzing your data...", SwingConstants.CENTER);
+        JLabel label = new JLabel("Finding patterns in your data...", SwingConstants.CENTER);
         label.setFont(new Font("Arial", Font.BOLD, 14));
         
         JProgressBar progressBar = new JProgressBar();

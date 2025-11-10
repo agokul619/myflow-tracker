@@ -11,7 +11,7 @@ import java.util.*;
 
 public class DataManager {
     
-    private static final String DATA_FILE = "myflow_data.json";
+    public static final String DATA_FILE = "myflow_data.json";
     private static final String BACKUP_DIR = "backups/";
     
     // Singleton pattern for consistent data access

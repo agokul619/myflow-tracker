@@ -1,0 +1,95 @@
+[
+  {
+    "date": "2025-11-01",
+    "physiological": {"sleep_hours": 7.0},
+    "cognitive_load": {"study_minutes": 500},
+    "emotional": {"stress": 3},
+    "symptoms": {"tic_count": 18},
+    "screen": {"screen_time_hours": 1.0},
+    "social": {"social_conflict": false},
+    "custom": [
+      {"name": "Music Break", "level": 3, "effect": -1}
+    ],
+    "journal": "Standard school and homework day."
+  },
+  {
+    "date": "2025-11-02",
+    "physiological": {"sleep_hours": 6.5},
+    "cognitive_load": {"study_minutes": 650},
+    "emotional": {"stress": 5},
+    "symptoms": {"tic_count": 22},
+    "screen": {"screen_time_hours": 1.5},
+    "social": {"social_conflict": true},
+    "custom": [
+      {"name": "Late Night Study", "level": 2, "effect": 1}
+    ],
+    "journal": "Heavy homework day, small argument."
+  },
+  {
+    "date": "2025-11-03",
+    "physiological": {"sleep_hours": 8.0},
+    "cognitive_load": {"study_minutes": 200},
+    "emotional": {"stress": 2},
+    "symptoms": {"tic_count": 10},
+    "screen": {"screen_time_hours": 1.0},
+    "social": {"social_conflict": false},
+    "custom": [
+      {"name": "Vacation Day", "level": 4, "effect": -1}
+    ],
+    "journal": "Day off, low cognitive load."
+  },
+  {
+    "date": "2025-11-04",
+    "physiological": {"sleep_hours": 7.5},
+    "cognitive_load": {"study_minutes": 700},
+    "emotional": {"stress": 4},
+    "symptoms": {"tic_count": 19},
+    "screen": {"screen_time_hours": 1.0},
+    "social": {"social_conflict": false},
+    "custom": [
+      {"name": "RSM Class", "level": 4, "effect": -1}
+    ],
+    "journal": "Long school day, RSM class helped focus."
+  },
+  {
+    "date": "2025-11-05",
+    "physiological": {"sleep_hours": 6.0},
+    "cognitive_load": {"study_minutes": 750},
+    "emotional": {"stress": 6},
+    "symptoms": {"tic_count": 25},
+    "screen": {"screen_time_hours": 3.0},
+    "social": {"social_conflict": true},
+    "custom": [
+      {"name": "Competition Training", "level": 4, "effect": 1},
+      {"name": "Late Night Study", "level": 1, "effect": 1}
+    ],
+    "journal": "Very long, high pressure training and study day."
+  },
+  {
+    "date": "2025-11-06",
+    "physiological": {"sleep_hours": 7.2},
+    "cognitive_load": {"study_minutes": 600},
+    "emotional": {"stress": 3},
+    "symptoms": {"tic_count": 15},
+    "screen": {"screen_time_hours": 1.0},
+    "social": {"social_conflict": false},
+    "custom": [
+      {"name": "Music Break", "level": 5, "effect": -1}
+    ],
+    "journal": "Used a long music break to de-stress."
+  },
+  {
+    "date": "2025-11-07",
+    "physiological": {"sleep_hours": 5.5},
+    "cognitive_load": {"study_minutes": 850},
+    "emotional": {"stress": 9},
+    "symptoms": {"tic_count": 45},
+    "screen": {"screen_time_hours": 3.5},
+    "social": {"social_conflict": false},
+    "custom": [
+      {"name": "Major Exam", "level": 5, "effect": 1},
+      {"name": "Late Night Study", "level": 3, "effect": 1}
+    ],
+    "journal": "The day of the Major Exam. Maximal load."
+  }
+]

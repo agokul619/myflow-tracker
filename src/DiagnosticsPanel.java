@@ -6,6 +6,8 @@ import javax.swing.border.*;
 import javax.swing.event.HyperlinkEvent;
 import java.awt.*;
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.function.Consumer;
 
 public class DiagnosticsPanel extends JPanel {
@@ -76,7 +78,7 @@ public class DiagnosticsPanel extends JPanel {
         runButton = new JButton("📊 Run Diagnostics");
         runButton.setFont(new Font("Arial", Font.BOLD, 14));
         runButton.setBackground(new Color(238, 66, 102)); // Red/pink from design
-        runButton.setForeground(Color.WHITE);
+        runButton.setForeground(Color.BLUE);
         runButton.setFocusPainted(false);
         runButton.setPreferredSize(new Dimension(180, 35));
         runButton.addActionListener(e -> handleRunDiagnostics());
@@ -145,6 +147,23 @@ public class DiagnosticsPanel extends JPanel {
         );
     }
     
+    public String getJsonPayload() {
+    	
+    	String jsonString = "";
+        try {
+            // Read the JSON file into a String
+            jsonString = Files.readString(Paths.get(DataManager.DATA_FILE));
+            
+            // Print it
+            System.out.println(jsonString);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return jsonString;
+    }
+    
     private void handleRunDiagnostics() {
         // Get selected range
         String selected = (String) rangeCombo.getSelectedItem();
@@ -153,8 +172,21 @@ public class DiagnosticsPanel extends JPanel {
         statusLabel.setText("Running analysis for " + selected + "...");
         runButton.setEnabled(false);
         
-        // Trigger callback
-        runDiagnosticsCallback.accept(days);
+        AnalysisClient ac = new AnalysisClient();
+        String res = getJsonPayload();
+        
+        try {
+            ac.runAnalysis(res, days);	
+        } catch (Exception e){
+        	e.printStackTrace();
+        	
+        }
+        
+    
+        
+        
+//        // Trigger callback
+//        runDiagnosticsCallback.accept(days);
     }
     
     private int extractDaysFromRange(String rangeText) {
