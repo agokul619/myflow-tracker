@@ -3,7 +3,7 @@
 # --- MyFlow Python Service Independent Test Runner ---
 
 OUTPUT_FILE="final_test_report.html"
-DATA_FILE="test_data.json"
+DATA_FILE="myflow.json"
 API_URL="http://127.0.0.1:5000/api/visualization"
 
 echo "======================================================="
@@ -35,6 +35,8 @@ RESPONSE=$(cat "$DATA_FILE" | curl -s -X POST $API_URL \
 if which jq > /dev/null; then
     BASE64_IMAGE=$(echo "$RESPONSE" | jq -r '.graph_image_base64')
     RECOMMENDATION=$(echo "$RESPONSE" | jq -r '.pacing_recommendation')
+    # Convert markdown bold (**text**) to HTML bold (<strong>text</strong>)
+    RECOMMENDATION=$(echo "$RECOMMENDATION" | sed 's/\*\*\([^*]*\)\*\*/<strong>\1<\/strong>/g')
     PACING_STATE=$(echo "$RESPONSE" | jq -r '.pacing_state')
     LATEST_LOAD=$(echo "$RESPONSE" | jq -r '.latest_load')
     LOAD_THRESHOLD=$(echo "$RESPONSE" | jq -r '.load_threshold')
@@ -77,6 +79,23 @@ echo "-------------------------------------------------------"
 
 # 6. Define the HTML Template using Here Document (EOF_HTML) for safe multi-line string handling
 # Variables are safely replaced later using 'sed'.
+# Determine colors based on pacing state
+if [[ "$PACING_STATE" == "GREEN LIGHT" ]]; then
+    STATUS_COLOR_BG="bg-green-50"
+    STATUS_COLOR_BORDER="border-green-500"
+    STATUS_COLOR_TEXT="text-green-700"
+    STATUS_COLOR_DARK="text-green-900"
+elif [[ "$PACING_STATE" == *"WARNING"* ]] || [[ "$PACING_STATE" == *"YELLOW"* ]]; then
+    STATUS_COLOR_BG="bg-yellow-50"
+    STATUS_COLOR_BORDER="border-yellow-500"
+    STATUS_COLOR_TEXT="text-yellow-700"
+    STATUS_COLOR_DARK="text-yellow-900"
+else
+    STATUS_COLOR_BG="bg-red-50"
+    STATUS_COLOR_BORDER="border-red-500"
+    STATUS_COLOR_TEXT="text-red-700"
+    STATUS_COLOR_DARK="text-red-900"
+fi
 HTML_TEMPLATE=$(cat << 'EOF_HTML'
 <!DOCTYPE html>
 <html lang="en">
@@ -97,13 +116,13 @@ HTML_TEMPLATE=$(cat << 'EOF_HTML'
             <h1 class="text-4xl font-extrabold text-[#43AA8B]">MyFlow Test Analysis</h1>
             <p class="text-gray-500 mt-1">Independent Microservices Validation</p>
         </header>
-        <section class="mb-8 p-4 bg-red-50 border-l-4 border-red-500 rounded-lg">
-            <h2 class="text-2xl font-semibold text-red-700 mb-2">{{PACING_STATE}}</h2>
-            <p class="text-lg text-red-900">{{RECOMMENDATION_TEXT}}</p>
-            <div class="mt-3 text-sm text-red-600">
-                (Latest Load: {{LATEST_LOAD}} | Threshold: {{LOAD_THRESHOLD}})
-            </div>
-        </section>
+       <section class="mb-8 p-4 {{STATUS_COLOR_BG}} border-l-4 {{STATUS_COLOR_BORDER}} rounded-lg">
+    <h2 class="text-2xl font-semibold {{STATUS_COLOR_TEXT}} mb-2">{{PACING_STATE}}</h2>
+    <p class="text-lg {{STATUS_COLOR_DARK}}">{{RECOMMENDATION_TEXT}}</p>
+    <div class="mt-3 text-sm {{STATUS_COLOR_TEXT}}">
+        Latest Load: <strong>{{LATEST_LOAD}}</strong> | Threshold: <strong>{{LOAD_THRESHOLD}}</strong>
+    </div>
+</section>
         <section>
             <h2 class="text-2xl font-semibold text-gray-800 mb-4">Factor Contribution Visualization</h2>
             <div class="bg-gray-100 p-4 rounded-lg">
@@ -158,7 +177,11 @@ sed "s/{{PACING_STATE}}/$PACING_STATE/g" | \
 sed "s/{{RECOMMENDATION_TEXT}}/$RECOMMENDATION/g" | \
 sed "s/{{LATEST_LOAD}}/$FORMATTED_LOAD/g" | \
 sed "s/{{LOAD_THRESHOLD}}/$FORMATTED_THRESHOLD/g" | \
-sed "s|{{BASE64_IMAGE_DATA}}|$BASE64_IMAGE|g" \
+sed "s|{{BASE64_IMAGE_DATA}}|$BASE64_IMAGE|g" | \
+sed "s/{{STATUS_COLOR_BG}}/$STATUS_COLOR_BG/g" | \
+sed "s/{{STATUS_COLOR_BORDER}}/$STATUS_COLOR_BORDER/g" | \
+sed "s/{{STATUS_COLOR_TEXT}}/$STATUS_COLOR_TEXT/g" | \
+sed "s/{{STATUS_COLOR_DARK}}/$STATUS_COLOR_DARK/g" \
 > "$OUTPUT_FILE"
 
 echo "✅ Report saved to $OUTPUT_FILE"
@@ -172,4 +195,3 @@ elif which open > /dev/null; then
 else
   echo "Report created. Please open $OUTPUT_FILE manually in your browser."
 fi
-

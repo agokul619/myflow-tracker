@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyFlow Analysis Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .color-box { width: 1rem; height: 1rem; border-radius: 9999px; }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <div class="max-w-4xl mx-auto bg-white shadow-2xl rounded-xl p-6 sm:p-8">
+        <header class="border-b pb-4 mb-6">
+            <h1 class="text-3xl font-bold text-[#43AA8B]">MyFlow Analysis Report</h1>
+            <p class="text-gray-500 mt-1">Generated: 2025-11-15</p>
+        </header>
+
+        <!-- What This Means Section -->
+        <section class="mb-6 p-4 bg-blue-50 border-l-4 border-blue-400 rounded-lg">
+            <h3 class="font-semibold text-blue-900 mb-2">📊 Understanding Your Results</h3>
+            <p class="text-sm text-blue-800 mb-1">
+                <strong>Your Current Load:</strong> 3.3 - This is your total stress level based on all tracked factors
+            </p>
+            <p class="text-sm text-blue-800">
+                <strong>Your Threshold:</strong> 14.1 - When you go above this, it's time to take action
+            </p>
+        </section>
+
+        <!-- Status Section with Dynamic Colors -->
+        <section class="mb-8 p-4 bg-green-50 border-l-4 border-green-500 rounded-lg">
+            <h2 class="text-xl font-semibold text-green-700 mb-2">GREEN LIGHT</h2>
+            <p class="text-lg text-green-900">✅ <strong>GREEN LIGHT!</strong> Your load and symptoms are stable and within the normal range. Recommendation: <strong>Maintain Momentum.</strong> Your current pacing and coping strategies are effective. Continue with your scheduled goals.</p>
+            <div class="mt-3 text-sm text-green-700">
+                Latest Load: <strong>3.3</strong> |
+                Threshold: <strong>14.1</strong>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">What's Affecting You</h2>
+            <div class="bg-gray-100 p-4 rounded-lg">
+                <img src="file:/Users/aditigokul/Documents/GitHub/myflow-tracker/reports/myflow_analysis_7days_2025-11-15_graph.png"
+                     alt="Daily Factor Contribution Graph"
+                     class="w-full h-auto rounded-md shadow-inner">
+            </div>
+            <p class="text-sm text-gray-600 mt-4">
+                <strong>How to read this chart:</strong> Bars going up show things that increase your stress.
+                Bars going down (yellow) show helpful activities that reduce your load.
+            </p>
+        </section>
+
+        <section class="mt-8">
+            <h3 class="text-lg font-semibold text-gray-800 mb-3">Chart Color Guide</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+                <div class="flex items-center space-x-2">
+                    <span class="color-box" style="background-color: #FF8C42;"></span>
+                    <span class="text-gray-600 font-medium">Stress Level (0-10)</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="color-box" style="background-color: #43AA8B;"></span>
+                    <span class="text-gray-600 font-medium">Study & Work Time</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="color-box" style="background-color: #2D7DD2;"></span>
+                    <span class="text-gray-600 font-medium">Stressful Events</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="color-box" style="background-color: #F5E663; border: 1px solid #d4c05a;"></span>
+                    <span class="text-gray-600 font-medium">Helpful Activities</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="color-box" style="background-color: transparent; border: 2px solid #EE4266;"></span>
+                    <span class="text-gray-600 font-medium">Your Tic Count (Red Line)</span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-8 pt-4 border-t text-center text-gray-500 text-sm">
+            <p>MyFlow Mental Health Tracker | Powered by Python AI</p>
+        </footer>
+    </div>
+</body>
+</html>

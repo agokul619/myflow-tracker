@@ -1,6 +1,6 @@
 // DiagnosticsPanel.java
 // Panel for running diagnostics and displaying analysis results
-
+import java.util.List;
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.event.HyperlinkEvent;
@@ -93,24 +93,22 @@ public class DiagnosticsPanel extends JPanel {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBorder(createSectionBorder("Analysis Results"));
         
-        // HTML viewer for results
         resultsPane = new JEditorPane();
         resultsPane.setContentType("text/html");
         resultsPane.setEditable(false);
         resultsPane.setFont(new Font("Arial", Font.PLAIN, 13));
         
-        // Enable hyperlink clicking
         resultsPane.addHyperlinkListener(e -> {
             if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
                 openInBrowser(e.getURL().toString());
             }
         });
         
-        // Initial placeholder content
         displayPlaceholder();
         
         JScrollPane scrollPane = new JScrollPane(resultsPane);
         scrollPane.setBorder(null);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); // ✅ Always show scrollbar
         panel.add(scrollPane, BorderLayout.CENTER);
         
         return panel;
@@ -176,17 +174,16 @@ public class DiagnosticsPanel extends JPanel {
         String res = getJsonPayload();
         
         try {
-            ac.runAnalysis(res, days);	
+            String reportPath = ac.runAnalysis(res, days);
+            displayResults(reportPath);
+            statusLabel.setText("✓ Analysis complete!");
         } catch (Exception e){
-        	e.printStackTrace();
-        	
+            e.printStackTrace();
+            displayError("Error: " + e.getMessage());
+            statusLabel.setText("Analysis failed.");
+        } finally {
+            runButton.setEnabled(true);
         }
-        
-    
-        
-        
-//        // Trigger callback
-//        runDiagnosticsCallback.accept(days);
     }
     
     private int extractDaysFromRange(String rangeText) {
@@ -194,17 +191,21 @@ public class DiagnosticsPanel extends JPanel {
         String[] parts = rangeText.split(" ");
         return Integer.parseInt(parts[1]);
     }
-    
     /**
      * Display analysis results (called from main app after Python service responds)
      */
+   
     public void displayResults(String htmlFilePath) {
         try {
-            // Load the HTML report file
             File reportFile = new File(htmlFilePath);
             if (reportFile.exists()) {
                 resultsPane.setPage(reportFile.toURI().toURL());
-                statusLabel.setText("✓ Analysis complete. Viewing results from: " + htmlFilePath);
+                
+                // ✅ BIG SUCCESS MESSAGE
+                statusLabel.setText("✅ ANALYSIS COMPLETE! Your personalized recommendations are ready.");
+                statusLabel.setFont(new Font("Arial", Font.BOLD, 14));
+                statusLabel.setForeground(new Color(67, 170, 139)); // Green color
+                
             } else {
                 displayError("Report file not found: " + htmlFilePath);
             }
@@ -215,7 +216,6 @@ public class DiagnosticsPanel extends JPanel {
             runButton.setEnabled(true);
         }
     }
-    
     /**
      * Display inline results from Python API response
      */

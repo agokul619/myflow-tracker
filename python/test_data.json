@@ -1,357 +1,232 @@
 [
   {
-    "date": "2025-11-01",
-    "physiological": {"sleep_hours": 7.0},
-    "cognitive_load": {"study_minutes": 500}, 
-    "emotional": {"stress": 3},
-    "symptoms": {"tic_count": 18},
-    "screen": {"screen_time_hours": 1.0}, 
-    "social": {"social_conflict": false},
-    "custom": [
-      {"name": "Music Break", "level": 3, "effect": -1} 
-    ],
-    "journal": "Standard day."
-  },
-  {
     "date": "2025-11-02",
-    "physiological": {"sleep_hours": 6.5},
-    "cognitive_load": {"study_minutes": 650}, 
-    "emotional": {"stress": 5},
-    "symptoms": {"tic_count": 22},
-    "screen": {"screen_time_hours": 1.5},
-    "social": {"social_conflict": true},
-    "custom": [
-      {"name": "Late Night Study", "level": 2, "effect": 1} 
-    ],
-    "journal": "Heavy homework day."
+    "symptoms": {"tic_count": 7},
+    "journal": "",
+    "social": {"social_conflict": false},
+    "emotional": {"stress": 4},
+    "custom": [{
+      "level": 1,
+      "effect": -1,
+      "name": "Singing"
+    }],
+    "screen": {"screen_time_hours": 2.2},
+    "cognitive_load": {"study_minutes": 360},
+    "physiological": {"sleep_hours": 8}
   },
   {
     "date": "2025-11-03",
-    "physiological": {"sleep_hours": 8.0},
-    "cognitive_load": {"study_minutes": 200}, 
-    "emotional": {"stress": 2},
-    "symptoms": {"tic_count": 10},
-    "screen": {"screen_time_hours": 1.0},
+    "symptoms": {"tic_count": 5},
+    "journal": "",
     "social": {"social_conflict": false},
+    "emotional": {"stress": 2},
     "custom": [
-      {"name": "Vacation Day", "level": 4, "effect": -1} 
+      {
+        "level": 5,
+        "effect": 1,
+        "name": "Taking JAVA test today"
+      },
+      {
+        "level": 2,
+        "effect": -1,
+        "name": "going for car drive w/ parents"
+      }
     ],
-    "journal": "Total day off, low tics."
+    "screen": {"screen_time_hours": 2.5},
+    "cognitive_load": {"study_minutes": 660},
+    "physiological": {"sleep_hours": 6.5}
   },
   {
     "date": "2025-11-04",
-    "physiological": {"sleep_hours": 7.5},
-    "cognitive_load": {"study_minutes": 700}, 
-    "emotional": {"stress": 4},
-    "symptoms": {"tic_count": 19},
-    "screen": {"screen_time_hours": 1.0},
+    "symptoms": {"tic_count": 9},
+    "journal": "",
     "social": {"social_conflict": false},
+    "emotional": {"stress": 2},
     "custom": [
-      {"name": "RSM Class", "level": 4, "effect": -1} 
+      {
+        "level": 3,
+        "effect": 1,
+        "name": "Studying for Java test"
+      },
+      {
+        "level": 3,
+        "effect": -1,
+        "name": "CHnage of place"
+      }
     ],
-    "journal": "RSM class helped focus."
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 600},
+    "physiological": {"sleep_hours": 7.5}
   },
   {
     "date": "2025-11-05",
-    "physiological": {"sleep_hours": 6.0},
-    "cognitive_load": {"study_minutes": 750}, 
-    "emotional": {"stress": 6},
-    "symptoms": {"tic_count": 25},
-    "screen": {"screen_time_hours": 3.0}, 
-    "social": {"social_conflict": true},
+    "symptoms": {"tic_count": 7},
+    "journal": "",
+    "social": {"social_conflict": false},
+    "emotional": {"stress": 5},
     "custom": [
-      {"name": "Competition Training", "level": 4, "effect": 1},
-      {"name": "Late Night Study", "level": 1, "effect": 1}
+      {
+        "level": 5,
+        "effect": -1,
+        "name": "Meditation"
+      },
+      {
+        "level": 2,
+        "effect": -1,
+        "name": "Listening to music"
+      },
+      {
+        "level": 3,
+        "effect": 1,
+        "name": "coding"
+      }
     ],
-    "journal": "High pressure day."
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 360},
+    "physiological": {"sleep_hours": 8}
   },
   {
     "date": "2025-11-06",
-    "physiological": {"sleep_hours": 7.2},
-    "cognitive_load": {"study_minutes": 600},
-    "emotional": {"stress": 3},
-    "symptoms": {"tic_count": 15},
-    "screen": {"screen_time_hours": 1.0},
+    "symptoms": {"tic_count": 4},
+    "journal": "",
     "social": {"social_conflict": false},
+    "emotional": {"stress": 6},
     "custom": [
-      {"name": "Music Break", "level": 5, "effect": -1} 
+      {
+        "level": 5,
+        "effect": -1,
+        "name": "Meditation"
+      },
+      {
+        "level": 2,
+        "effect": -1,
+        "name": "Listening to music"
+      },
+      {
+        "level": 3,
+        "effect": 1,
+        "name": "coding"
+      }
     ],
-    "journal": "Calm, used music."
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 600},
+    "physiological": {"sleep_hours": 7.5}
   },
   {
     "date": "2025-11-07",
-    "physiological": {"sleep_hours": 5.5},
-    "cognitive_load": {"study_minutes": 850}, 
-    "emotional": {"stress": 9},
-    "symptoms": {"tic_count": 45}, 
-    "screen": {"screen_time_hours": 3.5},
+    "symptoms": {"tic_count": 5},
+    "journal": "",
     "social": {"social_conflict": false},
+    "emotional": {"stress": 5},
     "custom": [
-      {"name": "Major Exam", "level": 5, "effect": 1},
-      {"name": "Late Night Study", "level": 3, "effect": 1}
+      {
+        "level": 5,
+        "effect": -1,
+        "name": "Meditation"
+      },
+      {
+        "level": 3,
+        "effect": -1,
+        "name": "Music"
+      }
     ],
-    "journal": "Maximal load day."
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 0},
+    "physiological": {"sleep_hours": 7.5}
   },
   {
     "date": "2025-11-08",
-    "physiological": {"sleep_hours": 7.0},
-    "cognitive_load": {"study_minutes": 550}, 
-    "emotional": {"stress": 3},
-    "symptoms": {"tic_count": 14},
-    "screen": {"screen_time_hours": 1.5},
+    "symptoms": {"tic_count": 4},
+    "journal": "",
     "social": {"social_conflict": false},
-    "custom": []
+    "emotional": {"stress": 3},
+    "custom": [
+      {
+        "level": 5,
+        "effect": -1,
+        "name": "Meditation"
+      },
+      {
+        "level": 3,
+        "effect": -1,
+        "name": "Listening to Music"
+      },
+      {
+        "level": 3,
+        "effect": -1,
+        "name": "grass"
+      },
+      {
+        "level": 5,
+        "effect": -1,
+        "name": "change of place for studying"
+      }
+    ],
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 420},
+    "physiological": {"sleep_hours": 8}
   },
   {
     "date": "2025-11-09",
-    "physiological": {"sleep_hours": 6.5},
-    "cognitive_load": {"study_minutes": 600}, 
-    "emotional": {"stress": 4},
-    "symptoms": {"tic_count": 17},
-    "screen": {"screen_time_hours": 2.0},
+    "symptoms": {"tic_count": 2},
+    "journal": "",
     "social": {"social_conflict": false},
-    "custom": []
-  },
-  {
-    "date": "2025-11-10",
-    "physiological": {"sleep_hours": 8.0},
-    "cognitive_load": {"study_minutes": 300}, 
     "emotional": {"stress": 2},
-    "symptoms": {"tic_count": 12},
-    "screen": {"screen_time_hours": 1.0},
-    "social": {"social_conflict": false},
     "custom": [
-      {"name": "Hangout w/ Friends", "level": 3, "effect": -1}
-    ]
+      {
+        "level": 3,
+        "effect": -1,
+        "name": "Singing"
+      },
+      {
+        "level": 5,
+        "effect": 1,
+        "name": "Thought loop"
+      }
+    ],
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 540},
+    "physiological": {"sleep_hours": 7.5}
   },
   {
     "date": "2025-11-11",
-    "physiological": {"sleep_hours": 7.0},
-    "cognitive_load": {"study_minutes": 600}, 
-    "emotional": {"stress": 4},
-    "symptoms": {"tic_count": 18},
-    "screen": {"screen_time_hours": 1.0},
+    "symptoms": {"tic_count": 1},
+    "journal": "",
     "social": {"social_conflict": false},
-    "custom": []
-  },
-  {
-    "date": "2025-11-12",
-    "physiological": {"sleep_hours": 5.8},
-    "cognitive_load": {"study_minutes": 700}, 
-    "emotional": {"stress": 6},
-    "symptoms": {"tic_count": 28},
-    "screen": {"screen_time_hours": 3.0},
-    "social": {"social_conflict": true},
-    "custom": [
-      {"name": "Java Test Prep", "level": 5, "effect": 1}
-    ]
+    "emotional": {"stress": 5},
+    "custom": [{
+      "level": 2,
+      "effect": -1,
+      "name": "Going for a drive"
+    }],
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 420},
+    "physiological": {"sleep_hours": 6.5}
   },
   {
     "date": "2025-11-13",
-    "physiological": {"sleep_hours": 7.8},
-    "cognitive_load": {"study_minutes": 500}, 
-    "emotional": {"stress": 3},
-    "symptoms": {"tic_count": 15},
-    "screen": {"screen_time_hours": 1.0},
+    "symptoms": {"tic_count": 2},
+    "journal": "",
     "social": {"social_conflict": false},
-    "custom": [
-      {"name": "Badminton", "level": 4, "effect": -1}
-    ]
-  },
-  {
-    "date": "2025-11-14",
-    "physiological": {"sleep_hours": 7.0},
-    "cognitive_load": {"study_minutes": 650}, 
-    "emotional": {"stress": 5},
-    "symptoms": {"tic_count": 21},
-    "screen": {"screen_time_hours": 1.5},
-    "social": {"social_conflict": false},
-    "custom": []
+    "emotional": {"stress": 2},
+    "custom": [{
+      "level": 4,
+      "effect": 1,
+      "name": "Coding for test in APCSA"
+    }],
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 480},
+    "physiological": {"sleep_hours": 7.5}
   },
   {
     "date": "2025-11-15",
-    "physiological": {"sleep_hours": 6.5},
-    "cognitive_load": {"study_minutes": 700}, 
-    "emotional": {"stress": 7},
-    "symptoms": {"tic_count": 30},
-    "screen": {"screen_time_hours": 2.5},
-    "social": {"social_conflict": true},
-    "custom": [
-      {"name": "Timed Test", "level": 3, "effect": 1}
-    ]
-  },
-  {
-    "date": "2025-11-16",
-    "physiological": {"sleep_hours": 8.5},
-    "cognitive_load": {"study_minutes": 400}, 
+    "symptoms": {"tic_count": 3},
+    "journal": "",
+    "social": {"social_conflict": false},
     "emotional": {"stress": 2},
-    "symptoms": {"tic_count": 10},
-    "screen": {"screen_time_hours": 1.0},
-    "social": {"social_conflict": false},
-    "custom": [
-      {"name": "Meditation", "level": 5, "effect": -1}
-    ]
-  },
-  {
-    "date": "2025-11-17",
-    "physiological": {"sleep_hours": 7.0},
-    "cognitive_load": {"study_minutes": 600}, 
-    "emotional": {"stress": 4},
-    "symptoms": {"tic_count": 17},
-    "screen": {"screen_time_hours": 1.0},
-    "social": {"social_conflict": false},
-    "custom": []
-  },
-  {
-    "date": "2025-11-18",
-    "physiological": {"sleep_hours": 6.0},
-    "cognitive_load": {"study_minutes": 750}, 
-    "emotional": {"stress": 6},
-    "symptoms": {"tic_count": 28},
-    "screen": {"screen_time_hours": 3.0},
-    "social": {"social_conflict": true},
-    "custom": [
-      {"name": "Arguing with Mom", "level": 5, "effect": 1}
-    ]
-  },
-  {
-    "date": "2025-11-19",
-    "physiological": {"sleep_hours": 8.0},
-    "cognitive_load": {"study_minutes": 550}, 
-    "emotional": {"stress": 3},
-    "symptoms": {"tic_count": 14},
-    "screen": {"screen_time_hours": 1.0},
-    "social": {"social_conflict": false},
-    "custom": [
-      {"name": "RSM Class", "level": 4, "effect": -1}
-    ]
-  },
-  {
-    "date": "2025-11-20",
-    "physiological": {"sleep_hours": 7.5},
-    "cognitive_load": {"study_minutes": 650}, 
-    "emotional": {"stress": 5},
-    "symptoms": {"tic_count": 20},
-    "screen": {"screen_time_hours": 1.5},
-    "social": {"social_conflict": false},
-    "custom": []
-  },
-  {
-    "date": "2025-11-21",
-    "physiological": {"sleep_hours": 6.8},
-    "cognitive_load": {"study_minutes": 700}, 
-    "emotional": {"stress": 5},
-    "symptoms": {"tic_count": 23},
-    "screen": {"screen_time_hours": 2.0},
-    "social": {"social_conflict": false},
-    "custom": []
-  },
-  {
-    "date": "2025-11-22",
-    "physiological": {"sleep_hours": 8.0},
-    "cognitive_load": {"study_minutes": 500}, 
-    "emotional": {"stress": 3},
-    "symptoms": {"tic_count": 15},
-    "screen": {"screen_time_hours": 1.0},
-    "social": {"social_conflict": false},
-    "custom": [
-      {"name": "Badminton", "level": 4, "effect": -1}
-    ]
-  },
-  {
-    "date": "2025-11-23",
-    "physiological": {"sleep_hours": 6.0},
-    "cognitive_load": {"study_minutes": 800}, 
-    "emotional": {"stress": 7},
-    "symptoms": {"tic_count": 35},
-    "screen": {"screen_time_hours": 3.0},
-    "social": {"social_conflict": true},
-    "custom": [
-      {"name": "Java Test Prep", "level": 5, "effect": 1},
-      {"name": "Late Night Study", "level": 2, "effect": 1}
-    ]
-  },
-  {
-    "date": "2025-11-24",
-    "physiological": {"sleep_hours": 7.0},
-    "cognitive_load": {"study_minutes": 600}, 
-    "emotional": {"stress": 4},
-    "symptoms": {"tic_count": 18},
-    "screen": {"screen_time_hours": 1.0},
-    "social": {"social_conflict": false},
-    "custom": [
-      {"name": "Meditation", "level": 3, "effect": -1}
-    ]
-  },
-  {
-    "date": "2025-11-25",
-    "physiological": {"sleep_hours": 7.5},
-    "cognitive_load": {"study_minutes": 700}, 
-    "emotional": {"stress": 5},
-    "symptoms": {"tic_count": 21},
-    "screen": {"screen_time_hours": 1.5},
-    "social": {"social_conflict": false},
-    "custom": []
-  },
-  {
-    "date": "2025-11-26",
-    "physiological": {"sleep_hours": 6.5},
-    "cognitive_load": {"study_minutes": 750}, 
-    "emotional": {"stress": 6},
-    "symptoms": {"tic_count": 30},
-    "screen": {"screen_time_hours": 2.5},
-    "social": {"social_conflict": true},
-    "custom": [
-      {"name": "Timed Test", "level": 4, "effect": 1}
-    ]
-  },
-  {
-    "date": "2025-11-27",
-    "physiological": {"sleep_hours": 8.0},
-    "cognitive_load": {"study_minutes": 550}, 
-    "emotional": {"stress": 3},
-    "symptoms": {"tic_count": 15},
-    "screen": {"screen_time_hours": 1.0},
-    "social": {"social_conflict": false},
-    "custom": [
-      {"name": "Hangout w/ Friends", "level": 5, "effect": -1}
-    ]
-  },
-  {
-    "date": "2025-11-28",
-    "physiological": {"sleep_hours": 7.0},
-    "cognitive_load": {"study_minutes": 600}, 
-    "emotional": {"stress": 4},
-    "symptoms": {"tic_count": 18},
-    "screen": {"screen_time_hours": 1.0},
-    "social": {"social_conflict": false},
-    "custom": []
-  },
-  {
-    "date": "2025-11-29",
-    "physiological": {"sleep_hours": 6.0},
-    "cognitive_load": {"study_minutes": 800}, 
-    "emotional": {"stress": 7},
-    "symptoms": {"tic_count": 38},
-    "screen": {"screen_time_hours": 3.0},
-    "social": {"social_conflict": true},
-    "custom": [
-      {"name": "Java Test Prep", "level": 5, "effect": 1},
-      {"name": "Arguing with Mom", "level": 4, "effect": 1}
-    ]
-  },
-  {
-    "date": "2025-11-30",
-    "physiological": {"sleep_hours": 5.5},
-    "cognitive_load": {"study_minutes": 850}, 
-    "emotional": {"stress": 9},
-    "symptoms": {"tic_count": 48}, 
-    "screen": {"screen_time_hours": 3.5},
-    "social": {"social_conflict": false},
-    "custom": [
-      {"name": "Major Exam", "level": 5, "effect": 1},
-      {"name": "Late Night Study", "level": 3, "effect": 1}
-    ]
+    "custom": [],
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 120},
+    "physiological": {"sleep_hours": 7.5}
   }
 ]
-

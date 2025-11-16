@@ -13,7 +13,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from flask import Flask, request, jsonify
 # The following line is needed if you are running this service locally
-# from flask_cors import CORS
+# from flask_cors import COR
 
 app = Flask(__name__)
 # CORS(app) # Uncomment this line if you encounter CORS issues running locally
@@ -63,6 +63,10 @@ def calculate_daily_metrics(data):
     # 3. Calculate Total Negative Load (TNL)
     # Stress is already on a 0-10 scale
     df['emotional.stress'] = pd.to_numeric(df['emotional.stress'], errors='coerce').fillna(0)
+    print ("Emotional stress")
+    print(df['emotional.stress'])
+    print ( df['cognitive_load.study_minutes'])
+    
     
     df['total_negative_load'] = (
         df['emotional.stress'] +

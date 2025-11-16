@@ -220,13 +220,13 @@
   },
   {
     "date": "2025-11-15",
-    "symptoms": {"tic_count": 3},
+    "symptoms": {"tic_count": 0},
     "journal": "",
     "social": {"social_conflict": false},
-    "emotional": {"stress": 2},
+    "emotional": {"stress": 0},
     "custom": [],
     "screen": {"screen_time_hours": 1},
-    "cognitive_load": {"study_minutes": 120},
+    "cognitive_load": {"study_minutes": 0},
     "physiological": {"sleep_hours": 7.5}
   }
 ]
