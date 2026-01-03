@@ -3,7 +3,7 @@
 # --- MyFlow Python Service Independent Test Runner ---
 
 OUTPUT_FILE="final_test_report.html"
-DATA_FILE="myflow.json"
+DATA_FILE="myflow_data.json"
 API_URL="http://127.0.0.1:5000/api/visualization"
 
 echo "======================================================="
@@ -172,16 +172,18 @@ EOF_HTML
 
 # 7. Safe Variable Substitution using SED
 # The HTML template is first processed to substitute placeholders with variables.
+
+
 echo "$HTML_TEMPLATE" | \
-sed "s/{{PACING_STATE}}/$PACING_STATE/g" | \
-sed "s/{{RECOMMENDATION_TEXT}}/$RECOMMENDATION/g" | \
-sed "s/{{LATEST_LOAD}}/$FORMATTED_LOAD/g" | \
-sed "s/{{LOAD_THRESHOLD}}/$FORMATTED_THRESHOLD/g" | \
+sed "s|{{PACING_STATE}}|$PACING_STATE|g" | \
+sed "s|{{RECOMMENDATION_TEXT}}|$RECOMMENDATION|g" | \
+sed "s|{{LATEST_LOAD}}|$FORMATTED_LOAD|g" | \
+sed "s|{{LOAD_THRESHOLD}}|$FORMATTED_THRESHOLD|g" | \
 sed "s|{{BASE64_IMAGE_DATA}}|$BASE64_IMAGE|g" | \
-sed "s/{{STATUS_COLOR_BG}}/$STATUS_COLOR_BG/g" | \
-sed "s/{{STATUS_COLOR_BORDER}}/$STATUS_COLOR_BORDER/g" | \
-sed "s/{{STATUS_COLOR_TEXT}}/$STATUS_COLOR_TEXT/g" | \
-sed "s/{{STATUS_COLOR_DARK}}/$STATUS_COLOR_DARK/g" \
+sed "s|{{STATUS_COLOR_BG}}|$STATUS_COLOR_BG|g" | \
+sed "s|{{STATUS_COLOR_BORDER}}|$STATUS_COLOR_BORDER|g" | \
+sed "s|{{STATUS_COLOR_TEXT}}|$STATUS_COLOR_TEXT|g" | \
+sed "s|{{STATUS_COLOR_DARK}}|$STATUS_COLOR_DARK|g" \
 > "$OUTPUT_FILE"
 
 echo "✅ Report saved to $OUTPUT_FILE"
