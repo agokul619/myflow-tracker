@@ -230,25 +230,25 @@
     "physiological": {"sleep_hours": 7.5}
   },
   {
-    "date": "2025-11-22",
-    "symptoms": {"tic_count": 4},
-    "journal": "Very nice - had lots of fun with friends \nDid some HW",
+    "date": "2025-11-19",
+    "symptoms": {"tic_count": 1},
+    "journal": "",
     "social": {"social_conflict": false},
     "emotional": {"stress": 5},
     "custom": [
       {
-        "level": 4,
-        "effect": -1,
-        "name": "LIstening to Music"
+        "level": 3,
+        "effect": 1,
+        "name": "wathcing tv"
       },
       {
-        "level": 1,
+        "level": 3,
         "effect": -1,
-        "name": "Watching TV"
+        "name": "going out for a drive"
       }
     ],
-    "screen": {"screen_time_hours": 3},
-    "cognitive_load": {"study_minutes": 420},
-    "physiological": {"sleep_hours": 6.5}
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 60},
+    "physiological": {"sleep_hours": 7.5}
   }
 ]
