@@ -12,6 +12,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from flask import Flask, request, jsonify
+import math
+from statistics import mean
 # The following line is needed if you are running this service locally
 # from flask_cors import COR
 
@@ -234,6 +236,151 @@ def generate_visualization(df):
     # Encode to Base64
     img_base64 = base64.b64encode(img_stream.read()).decode('utf-8')
     return img_base64
+
+   
+
+def calculate_sleep_analysis(data):
+    if len(data) < 7:
+        return {
+            'error': 'Not enough data. Track for at least 7 days.',
+            'avg_sleep': None,
+            'correlation': None
+        }
+    
+    recent_data = data[-14:] if len(data) >= 14 else data
+    
+    sleep_hours = []
+    tic_counts = []
+    good_sleep_tics = []
+    bad_sleep_tics = []
+    
+    for entry in recent_data:
+        # FIX: Look in physiological.sleep_hours
+        sleep = entry.get('physiological', {}).get('sleep_hours', 0)
+        tic_count = entry.get('symptoms', {}).get('tic_count', 0)
+        
+        if sleep > 0:
+            sleep_hours.append(float(sleep))
+            tic_counts.append(float(tic_count))
+            
+            if 7 <= sleep <= 9:
+                good_sleep_tics.append(float(tic_count))
+            elif sleep < 6:
+                bad_sleep_tics.append(float(tic_count))
+    
+    # Rest of the function stays the same...
+    
+    if len(sleep_hours) < 5:
+        return {
+            'error': 'Not enough days with sleep data logged.',
+            'avg_sleep': None,
+            'correlation': None
+        }
+    
+    avg_sleep = round(mean(sleep_hours), 1)
+    correlation = calculate_pearson_correlation(sleep_hours, tic_counts)
+    avg_good_sleep_tics = round(mean(good_sleep_tics), 1) if good_sleep_tics else None
+    avg_bad_sleep_tics = round(mean(bad_sleep_tics), 1) if bad_sleep_tics else None
+    
+    if avg_good_sleep_tics and avg_bad_sleep_tics and avg_good_sleep_tics > 0:
+        percent_diff = round(
+            ((avg_bad_sleep_tics - avg_good_sleep_tics) / avg_good_sleep_tics) * 100
+        )
+    else:
+        percent_diff = None
+    
+    insight = generate_sleep_insight(
+        avg_sleep,
+        correlation,
+        percent_diff,
+        avg_good_sleep_tics,
+        avg_bad_sleep_tics
+    )
+    
+    return {
+        'avg_sleep_hours': avg_sleep,
+        'correlation_coefficient': correlation,
+        'avg_tics_good_sleep': avg_good_sleep_tics,
+        'avg_tics_bad_sleep': avg_bad_sleep_tics,
+        'percent_difference': percent_diff,
+        'insight_message': insight,
+        'days_analyzed': len(sleep_hours),
+        'success': True
+    }
+
+def calculate_pearson_correlation(x_values, y_values):
+    if len(x_values) < 2 or len(y_values) < 2:
+        return 0.0
+    
+    n = len(x_values)
+    mean_x = mean(x_values)
+    mean_y = mean(y_values)
+    
+    covariance = sum((x_values[i] - mean_x) * (y_values[i] - mean_y) for i in range(n))
+    std_x = math.sqrt(sum((x - mean_x) ** 2 for x in x_values))
+    std_y = math.sqrt(sum((y - mean_y) ** 2 for y in y_values))
+    
+    if std_x == 0 or std_y == 0:
+        return 0.0
+    
+    correlation = covariance / (std_x * std_y)
+    return round(correlation, 2)
+
+def generate_sleep_insight(avg_sleep, correlation, percent_diff, good_tics, bad_tics):
+    if avg_sleep < 6:
+        sleep_status = "⚠️ You're averaging only {:.1f} hours of sleep per night - that's below the recommended 7-9 hours for teens.".format(avg_sleep)
+    elif avg_sleep < 7:
+        sleep_status = "You're averaging {:.1f} hours of sleep per night - close to the recommended 7-9 hour range.".format(avg_sleep)
+    elif avg_sleep <= 9:
+        sleep_status = "✅ You're averaging {:.1f} hours of sleep per night - that's in the healthy range!".format(avg_sleep)
+    else:
+        sleep_status = "You're averaging {:.1f} hours of sleep per night - more than the typical 7-9 hour recommendation.".format(avg_sleep)
+    
+    if correlation <= -0.7:
+        corr_text = " Your sleep-tic connection is VERY STRONG ({:.2f}). The closer this number is to -1, the more sleep helps reduce your tics. Your data shows more sleep dramatically reduces your tic count!".format(correlation)
+    elif correlation <= -0.5:
+        corr_text = " Your sleep-tic connection is STRONG ({:.2f}). The closer to -1, the stronger the connection. More sleep significantly reduces your tics.".format(correlation)
+    elif correlation <= -0.3:
+        corr_text = " Your sleep-tic connection is MODERATE ({:.2f}). Numbers closer to -1 mean stronger connection. More sleep tends to reduce your tics.".format(correlation)
+    elif correlation <= -0.1:
+        corr_text = " Your sleep-tic connection is WEAK ({:.2f}). This means sleep has a small effect on your tics. Other factors might be more important.".format(correlation)
+    elif correlation < 0.1:
+        corr_text = " Your sleep-tic connection is VERY WEAK ({:.2f}). Sleep doesn't show a clear pattern with your tics yet. Other factors are likely more important.".format(correlation)
+    else:
+        corr_text = " Your sleep-tic connection is POSITIVE ({:.2f}). This is unusual - it suggests more sleep correlates with more tics. This likely means other factors (sleep quality, stress, diet) are more important than sleep quantity.".format(correlation)
+    
+    if good_tics is not None and bad_tics is not None and percent_diff is not None:
+        if percent_diff > 0:
+            comparison = " On days you sleep under 6 hours, your tics average {:.1f}. On days with 7-9 hours, they drop to {:.1f} - that's a {}% improvement!".format(
+                bad_tics, good_tics, percent_diff
+            )
+        elif percent_diff < 0:
+            comparison = " Surprisingly, on days with 7-9 hours of sleep, your tics average {:.1f}, compared to {:.1f} on shorter sleep days.".format(
+                good_tics, bad_tics
+            )
+        else:
+            comparison = " Your tic levels are similar regardless of sleep duration."
+    else:
+        comparison = " Track a few more days to compare tic levels between good and bad sleep days."
+    
+    return sleep_status + corr_text + comparison
+
+@app.route('/api/sleep-analysis', methods=['POST'])
+def get_sleep_analysis():
+    if not request.json:
+        return jsonify({"error": "Missing JSON payload"}), 400
+    
+    data = request.json
+    
+    try:
+        analysis = calculate_sleep_analysis(data)
+        return jsonify(analysis)
+    except Exception as e:
+        print(f"Error in sleep analysis: {e}")
+        return jsonify({
+            "error": f"Sleep analysis failed: {str(e)}",
+            "success": False
+        }), 500
 
 # --- FLASK APPLICATION ENDPOINT ---
 
