@@ -1,32 +1,311 @@
 [
-  {"date": "2025-10-15", "symptoms": {"tic_count": 2}, "emotional": {"stress": 2}, "cognitive_load": {"study_minutes": 60}, "physiological": {"sleep_hours": 8.5}, "custom": [{"level": 5, "effect": -1, "name": "Meditation"}]},
-  {"date": "2025-10-16", "symptoms": {"tic_count": 1}, "emotional": {"stress": 1}, "cognitive_load": {"study_minutes": 30}, "physiological": {"sleep_hours": 9}, "custom": [{"level": 4, "effect": -1, "name": "Yoga"}, {"level": 3, "effect": -1, "name": "Music"}]},
-  {"date": "2025-10-17", "symptoms": {"tic_count": 3}, "emotional": {"stress": 3}, "cognitive_load": {"study_minutes": 90}, "physiological": {"sleep_hours": 8}, "custom": [{"level": 3, "effect": -1, "name": "Exercise"}]},
-  {"date": "2025-10-18", "symptoms": {"tic_count": 2}, "emotional": {"stress": 2}, "cognitive_load": {"study_minutes": 60}, "physiological": {"sleep_hours": 9}, "custom": [{"level": 5, "effect": -1, "name": "Weekend relaxation"}]},
-  {"date": "2025-10-19", "symptoms": {"tic_count": 1}, "emotional": {"stress": 1}, "cognitive_load": {"study_minutes": 0}, "physiological": {"sleep_hours": 9.5}, "custom": [{"level": 5, "effect": -1, "name": "Full rest day"}, {"level": 4, "effect": -1, "name": "Nature walk"}]},
-  {"date": "2025-10-20", "symptoms": {"tic_count": 2}, "emotional": {"stress": 2}, "cognitive_load": {"study_minutes": 90}, "physiological": {"sleep_hours": 8.5}, "custom": [{"level": 4, "effect": -1, "name": "Good sleep hygiene"}]},
-  {"date": "2025-10-21", "symptoms": {"tic_count": 3}, "emotional": {"stress": 3}, "cognitive_load": {"study_minutes": 120}, "physiological": {"sleep_hours": 8}, "custom": [{"level": 3, "effect": -1, "name": "Breathing exercises"}]},
-  {"date": "2025-10-22", "symptoms": {"tic_count": 2}, "emotional": {"stress": 2}, "cognitive_load": {"study_minutes": 60}, "physiological": {"sleep_hours": 9}, "custom": [{"level": 5, "effect": -1, "name": "Meditation before bed"}]},
-  {"date": "2025-10-23", "symptoms": {"tic_count": 1}, "emotional": {"stress": 1}, "cognitive_load": {"study_minutes": 30}, "physiological": {"sleep_hours": 9.5}, "custom": [{"level": 4, "effect": -1, "name": "Calm evening routine"}]},
-  {"date": "2025-10-24", "symptoms": {"tic_count": 2}, "emotional": {"stress": 2}, "cognitive_load": {"study_minutes": 90}, "physiological": {"sleep_hours": 8.5}, "custom": [{"level": 4, "effect": -1, "name": "Reading before sleep"}]},
-  {"date": "2025-10-25", "symptoms": {"tic_count": 3}, "emotional": {"stress": 3}, "cognitive_load": {"study_minutes": 120}, "physiological": {"sleep_hours": 8}, "custom": [{"level": 3, "effect": -1, "name": "Light study load"}]},
-  {"date": "2025-10-26", "symptoms": {"tic_count": 1}, "emotional": {"stress": 1}, "cognitive_load": {"study_minutes": 0}, "physiological": {"sleep_hours": 10}, "custom": [{"level": 5, "effect": -1, "name": "Vacation day"}, {"level": 5, "effect": -1, "name": "Beach trip"}]},
-  {"date": "2025-10-27", "symptoms": {"tic_count": 2}, "emotional": {"stress": 2}, "cognitive_load": {"study_minutes": 60}, "physiological": {"sleep_hours": 9}, "custom": [{"level": 4, "effect": -1, "name": "Good mood"}]},
-  {"date": "2025-10-28", "symptoms": {"tic_count": 2}, "emotional": {"stress": 2}, "cognitive_load": {"study_minutes": 90}, "physiological": {"sleep_hours": 8.5}, "custom": [{"level": 4, "effect": -1, "name": "Healthy meals"}]},
-  {"date": "2025-10-29", "symptoms": {"tic_count": 3}, "emotional": {"stress": 3}, "cognitive_load": {"study_minutes": 120}, "physiological": {"sleep_hours": 8}, "custom": [{"level": 3, "effect": -1, "name": "Moderate stress management"}]},
-  {"date": "2025-10-30", "symptoms": {"tic_count": 1}, "emotional": {"stress": 1}, "cognitive_load": {"study_minutes": 30}, "physiological": {"sleep_hours": 9.5}, "custom": [{"level": 5, "effect": -1, "name": "Perfect sleep schedule"}]},
-  {"date": "2025-10-31", "symptoms": {"tic_count": 2}, "emotional": {"stress": 2}, "cognitive_load": {"study_minutes": 60}, "physiological": {"sleep_hours": 9}, "custom": [{"level": 4, "effect": -1, "name": "Evening walk"}]},
-  {"date": "2025-11-01", "symptoms": {"tic_count": 1}, "emotional": {"stress": 1}, "cognitive_load": {"study_minutes": 0}, "physiological": {"sleep_hours": 10}, "custom": [{"level": 5, "effect": -1, "name": "Weekend off"}, {"level": 4, "effect": -1, "name": "Quality time with friends"}]},
-  {"date": "2025-11-02", "symptoms": {"tic_count": 2}, "emotional": {"stress": 2}, "cognitive_load": {"study_minutes": 90}, "physiological": {"sleep_hours": 8.5}, "custom": [{"level": 4, "effect": -1, "name": "Morning exercise"}]},
-  {"date": "2025-11-03", "symptoms": {"tic_count": 3}, "emotional": {"stress": 3}, "cognitive_load": {"study_minutes": 120}, "physiological": {"sleep_hours": 8}, "custom": [{"level": 3, "effect": -1, "name": "Balanced schedule"}]},
-  {"date": "2025-11-04", "symptoms": {"tic_count": 2}, "emotional": {"stress": 2}, "cognitive_load": {"study_minutes": 60}, "physiological": {"sleep_hours": 9}, "custom": [{"level": 5, "effect": -1, "name": "Meditation"}, {"level": 3, "effect": -1, "name": "Music therapy"}]},
-  {"date": "2025-11-05", "symptoms": {"tic_count": 1}, "emotional": {"stress": 1}, "cognitive_load": {"study_minutes": 30}, "physiological": {"sleep_hours": 9.5}, "custom": [{"level": 5, "effect": -1, "name": "Great night's sleep"}]},
-  {"date": "2025-11-06", "symptoms": {"tic_count": 2}, "emotional": {"stress": 2}, "cognitive_load": {"study_minutes": 90}, "physiological": {"sleep_hours": 8.5}, "custom": [{"level": 4, "effect": -1, "name": "Listening to music"}]},
-  {"date": "2025-11-07", "symptoms": {"tic_count": 1}, "emotional": {"stress": 1}, "cognitive_load": {"study_minutes": 0}, "physiological": {"sleep_hours": 10}, "custom": [{"level": 5, "effect": -1, "name": "Meditation"}, {"level": 5, "effect": -1, "name": "Music"}, {"level": 4, "effect": -1, "name": "Outdoor time"}]},
-  {"date": "2025-11-08", "symptoms": {"tic_count": 1}, "emotional": {"stress": 1}, "cognitive_load": {"study_minutes": 60}, "physiological": {"sleep_hours": 9}, "custom": [{"level": 5, "effect": -1, "name": "Meditation"}, {"level": 3, "effect": -1, "name": "Listening to Music"}, {"level": 3, "effect": -1, "name": "grass"}, {"level": 5, "effect": -1, "name": "change of place for studying"}]},
-  {"date": "2025-11-09", "symptoms": {"tic_count": 2}, "emotional": {"stress": 2}, "cognitive_load": {"study_minutes": 90}, "physiological": {"sleep_hours": 8.5}, "custom": [{"level": 4, "effect": -1, "name": "Singing"}]},
-  {"date": "2025-11-10", "symptoms": {"tic_count": 3}, "emotional": {"stress": 3}, "cognitive_load": {"study_minutes": 120}, "physiological": {"sleep_hours": 8}, "custom": [{"level": 3, "effect": -1, "name": "Moderate workload"}]},
-  {"date": "2025-11-11", "symptoms": {"tic_count": 1}, "emotional": {"stress": 1}, "cognitive_load": {"study_minutes": 30}, "physiological": {"sleep_hours": 9.5}, "custom": [{"level": 5, "effect": -1, "name": "Going for a drive"}]},
-  {"date": "2025-11-12", "symptoms": {"tic_count": 2}, "emotional": {"stress": 2}, "cognitive_load": {"study_minutes": 60}, "physiological": {"sleep_hours": 9}, "custom": [{"level": 4, "effect": -1, "name": "Relaxing day"}]},
-  {"date": "2025-11-13", "symptoms": {"tic_count": 2}, "emotional": {"stress": 2}, "cognitive_load": {"study_minutes": 90}, "physiological": {"sleep_hours": 8.5}, "custom": [{"level": 4, "effect": -1, "name": "Coding for test in APCSA"}, {"level": 3, "effect": -1, "name": "Well-rested"}]}
+  {
+    "date": "2025-10-15",
+    "symptoms": { "tic_count": 8 },
+    "emotional": { "stress": 7 },
+    "physiological": { "sleep_hours": 5.5 },
+    "cognitive_load": { "study_minutes": 180 },
+    "custom": [
+      { "name": "Caffeine", "level": 3, "effect": 2 }
+    ]
+  },
+  {
+    "date": "2025-10-16",
+    "symptoms": { "tic_count": 5 },
+    "emotional": { "stress": 4 },
+    "physiological": { "sleep_hours": 7.5 },
+    "cognitive_load": { "study_minutes": 90 },
+    "custom": [
+      { "name": "Music break", "level": 2, "effect": -3 }
+    ]
+  },
+  {
+    "date": "2025-10-17",
+    "symptoms": { "tic_count": 9 },
+    "emotional": { "stress": 8 },
+    "physiological": { "sleep_hours": 4.5 },
+    "cognitive_load": { "study_minutes": 240 },
+    "custom": [
+      { "name": "Exam stress", "level": 4, "effect": 3 }
+    ]
+  },
+  {
+    "date": "2025-10-18",
+    "symptoms": { "tic_count": 3 },
+    "emotional": { "stress": 2 },
+    "physiological": { "sleep_hours": 8.5 },
+    "cognitive_load": { "study_minutes": 30 },
+    "custom": [
+      { "name": "Nature walk", "level": 3, "effect": -4 },
+      { "name": "Music break", "level": 2, "effect": -3 }
+    ]
+  },
+  {
+    "date": "2025-10-19",
+    "symptoms": { "tic_count": 6 },
+    "emotional": { "stress": 5 },
+    "physiological": { "sleep_hours": 6.5 },
+    "cognitive_load": { "study_minutes": 120 },
+    "custom": []
+  },
+  {
+    "date": "2025-10-20",
+    "symptoms": { "tic_count": 2 },
+    "emotional": { "stress": 1 },
+    "physiological": { "sleep_hours": 9 },
+    "cognitive_load": { "study_minutes": 0 },
+    "custom": [
+      { "name": "Vacation day", "level": 5, "effect": -5 },
+      { "name": "Nature walk", "level": 4, "effect": -4 }
+    ]
+  },
+  {
+    "date": "2025-10-21",
+    "symptoms": { "tic_count": 7 },
+    "emotional": { "stress": 6 },
+    "physiological": { "sleep_hours": 5 },
+    "cognitive_load": { "study_minutes": 200 },
+    "custom": [
+      { "name": "Caffeine", "level": 4, "effect": 2 }
+    ]
+  },
+  {
+    "date": "2025-10-22",
+    "symptoms": { "tic_count": 4 },
+    "emotional": { "stress": 3 },
+    "physiological": { "sleep_hours": 8 },
+    "cognitive_load": { "study_minutes": 60 },
+    "custom": [
+      { "name": "Meditation", "level": 3, "effect": -4 }
+    ]
+  },
+  {
+    "date": "2025-10-23",
+    "symptoms": { "tic_count": 10 },
+    "emotional": { "stress": 9 },
+    "physiological": { "sleep_hours": 4 },
+    "cognitive_load": { "study_minutes": 300 },
+    "custom": [
+      { "name": "Exam stress", "level": 5, "effect": 3 },
+      { "name": "Caffeine", "level": 5, "effect": 2 }
+    ]
+  },
+  {
+    "date": "2025-10-24",
+    "symptoms": { "tic_count": 3 },
+    "emotional": { "stress": 2 },
+    "physiological": { "sleep_hours": 8.5 },
+    "cognitive_load": { "study_minutes": 45 },
+    "custom": [
+      { "name": "Music break", "level": 3, "effect": -3 },
+      { "name": "Meditation", "level": 2, "effect": -4 }
+    ]
+  },
+  {
+    "date": "2025-10-25",
+    "symptoms": { "tic_count": 5 },
+    "emotional": { "stress": 4 },
+    "physiological": { "sleep_hours": 7 },
+    "cognitive_load": { "study_minutes": 100 },
+    "custom": [
+      { "name": "Exercise", "level": 2, "effect": -3 }
+    ]
+  },
+  {
+    "date": "2025-10-26",
+    "symptoms": { "tic_count": 8 },
+    "emotional": { "stress": 7 },
+    "physiological": { "sleep_hours": 5.5 },
+    "cognitive_load": { "study_minutes": 180 },
+    "custom": [
+      { "name": "Social event", "level": 3, "effect": 2 }
+    ]
+  },
+  {
+    "date": "2025-10-27",
+    "symptoms": { "tic_count": 2 },
+    "emotional": { "stress": 1 },
+    "physiological": { "sleep_hours": 9 },
+    "cognitive_load": { "study_minutes": 0 },
+    "custom": [
+      { "name": "Nature walk", "level": 5, "effect": -4 },
+      { "name": "Meditation", "level": 4, "effect": -4 },
+      { "name": "Music break", "level": 2, "effect": -3 }
+    ]
+  },
+  {
+    "date": "2025-10-28",
+    "symptoms": { "tic_count": 6 },
+    "emotional": { "stress": 5 },
+    "physiological": { "sleep_hours": 6 },
+    "cognitive_load": { "study_minutes": 150 },
+    "custom": []
+  },
+  {
+    "date": "2025-10-29",
+    "symptoms": { "tic_count": 4 },
+    "emotional": { "stress": 3 },
+    "physiological": { "sleep_hours": 7.5 },
+    "cognitive_load": { "study_minutes": 80 },
+    "custom": [
+      { "name": "Exercise", "level": 3, "effect": -3 }
+    ]
+  },
+  {
+    "date": "2025-10-30",
+    "symptoms": { "tic_count": 9 },
+    "emotional": { "stress": 8 },
+    "physiological": { "sleep_hours": 4.5 },
+    "cognitive_load": { "study_minutes": 250 },
+    "custom": [
+      { "name": "Deadline pressure", "level": 4, "effect": 3 }
+    ]
+  },
+  {
+    "date": "2025-10-31",
+    "symptoms": { "tic_count": 5 },
+    "emotional": { "stress": 4 },
+    "physiological": { "sleep_hours": 7 },
+    "cognitive_load": { "study_minutes": 90 },
+    "custom": [
+      { "name": "Fun activity", "level": 3, "effect": -2 }
+    ]
+  },
+  {
+    "date": "2025-11-01",
+    "symptoms": { "tic_count": 3 },
+    "emotional": { "stress": 2 },
+    "physiological": { "sleep_hours": 8 },
+    "cognitive_load": { "study_minutes": 40 },
+    "custom": [
+      { "name": "Nature walk", "level": 4, "effect": -4 },
+      { "name": "Exercise", "level": 3, "effect": -3 }
+    ]
+  },
+  {
+    "date": "2025-11-02",
+    "symptoms": { "tic_count": 7 },
+    "emotional": { "stress": 6 },
+    "physiological": { "sleep_hours": 5 },
+    "cognitive_load": { "study_minutes": 200 },
+    "custom": [
+      { "name": "Caffeine", "level": 3, "effect": 2 }
+    ]
+  },
+  {
+    "date": "2025-11-03",
+    "symptoms": { "tic_count": 4 },
+    "emotional": { "stress": 3 },
+    "physiological": { "sleep_hours": 8 },
+    "cognitive_load": { "study_minutes": 70 },
+    "custom": [
+      { "name": "Meditation", "level": 4, "effect": -4 }
+    ]
+  },
+  {
+    "date": "2025-11-04",
+    "symptoms": { "tic_count": 11 },
+    "emotional": { "stress": 9 },
+    "physiological": { "sleep_hours": 3.5 },
+    "cognitive_load": { "study_minutes": 320 },
+    "custom": [
+      { "name": "Major exam", "level": 5, "effect": 4 },
+      { "name": "Caffeine", "level": 5, "effect": 2 }
+    ]
+  },
+  {
+    "date": "2025-11-05",
+    "symptoms": { "tic_count": 2 },
+    "emotional": { "stress": 1 },
+    "physiological": { "sleep_hours": 10 },
+    "cognitive_load": { "study_minutes": 0 },
+    "custom": [
+      { "name": "Recovery day", "level": 5, "effect": -5 },
+      { "name": "Nature walk", "level": 5, "effect": -4 },
+      { "name": "Meditation", "level": 3, "effect": -4 }
+    ]
+  },
+  {
+    "date": "2025-11-06",
+    "symptoms": { "tic_count": 5 },
+    "emotional": { "stress": 4 },
+    "physiological": { "sleep_hours": 7 },
+    "cognitive_load": { "study_minutes": 100 },
+    "custom": [
+      { "name": "Music break", "level": 2, "effect": -3 }
+    ]
+  },
+  {
+    "date": "2025-11-07",
+    "symptoms": { "tic_count": 6 },
+    "emotional": { "stress": 5 },
+    "physiological": { "sleep_hours": 6.5 },
+    "cognitive_load": { "study_minutes": 130 },
+    "custom": []
+  },
+  {
+    "date": "2025-11-08",
+    "symptoms": { "tic_count": 3 },
+    "emotional": { "stress": 2 },
+    "physiological": { "sleep_hours": 8.5 },
+    "cognitive_load": { "study_minutes": 50 },
+    "custom": [
+      { "name": "Exercise", "level": 4, "effect": -3 },
+      { "name": "Music break", "level": 3, "effect": -3 }
+    ]
+  },
+  {
+    "date": "2025-11-09",
+    "symptoms": { "tic_count": 8 },
+    "emotional": { "stress": 7 },
+    "physiological": { "sleep_hours": 5 },
+    "cognitive_load": { "study_minutes": 190 },
+    "custom": [
+      { "name": "Social anxiety", "level": 3, "effect": 3 }
+    ]
+  },
+  {
+    "date": "2025-11-10",
+    "symptoms": { "tic_count": 4 },
+    "emotional": { "stress": 3 },
+    "physiological": { "sleep_hours": 7.5 },
+    "cognitive_load": { "study_minutes": 85 },
+    "custom": [
+      { "name": "Meditation", "level": 3, "effect": -4 },
+      { "name": "Nature walk", "level": 2, "effect": -4 }
+    ]
+  },
+  {
+    "date": "2025-11-11",
+    "symptoms": { "tic_count": 1 },
+    "emotional": { "stress": 1 },
+    "physiological": { "sleep_hours": 9.5 },
+    "cognitive_load": { "study_minutes": 0 },
+    "custom": [
+      { "name": "Vacation day", "level": 5, "effect": -5 },
+      { "name": "Nature walk", "level": 5, "effect": -4 },
+      { "name": "Exercise", "level": 4, "effect": -3 },
+      { "name": "Meditation", "level": 3, "effect": -4 }
+    ]
+  },
+  {
+    "date": "2025-11-12",
+    "symptoms": { "tic_count": 6 },
+    "emotional": { "stress": 5 },
+    "physiological": { "sleep_hours": 6 },
+    "cognitive_load": { "study_minutes": 140 },
+    "custom": [
+      { "name": "Back to routine", "level": 2, "effect": 1 }
+    ]
+  },
+  {
+    "date": "2025-11-13",
+    "symptoms": { "tic_count": 5 },
+    "emotional": { "stress": 4 },
+    "physiological": { "sleep_hours": 7 },
+    "cognitive_load": { "study_minutes": 110 },
+    "custom": [
+      { "name": "Music break", "level": 3, "effect": -3 }
+    ]
+  }
 ]
