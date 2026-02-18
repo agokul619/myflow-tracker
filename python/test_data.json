@@ -1,317 +1,122 @@
 [
   {
     "date": "2025-02-01",
-    "symptoms": {
-      "tic_count": 3
-    },
-    "emotional": {
-      "stress": 4
-    },
-    "physiological": {
-      "sleep_hours": 6.8
-    },
-    "cognitive_load": {
-      "study_minutes": 167
-    },
-    "custom": [
-      {
-        "name": "Nature walk",
-        "effect": -4
-      }
-    ]
+    "symptoms": { "tic_count": 3 },
+    "emotional": { "stress": 4 },
+    "physiological": { "sleep_hours": 7.0 },
+    "cognitive_load": { "study_minutes": 140 },
+    "custom": [{ "name": "Nature walk", "effect": -3 }]
   },
   {
     "date": "2025-02-02",
-    "symptoms": {
-      "tic_count": 5
-    },
-    "emotional": {
-      "stress": 4
-    },
-    "physiological": {
-      "sleep_hours": 6.7
-    },
-    "cognitive_load": {
-      "study_minutes": 130
-    },
-    "custom": [
-      {
-        "name": "Yoga",
-        "effect": -4
-      }
-    ]
+    "symptoms": { "tic_count": 6 },
+    "emotional": { "stress": 5 },
+    "physiological": { "sleep_hours": 9.2 },
+    "cognitive_load": { "study_minutes": 160 },
+    "custom": [{ "name": "Slept in", "effect": 2 }]
   },
   {
     "date": "2025-02-03",
-    "symptoms": {
-      "tic_count": 5
-    },
-    "emotional": {
-      "stress": 4
-    },
-    "physiological": {
-      "sleep_hours": 6.1
-    },
-    "cognitive_load": {
-      "study_minutes": 152
-    },
-    "custom": [
-      {
-        "name": "Caffeine",
-        "effect": 2
-      }
-    ]
+    "symptoms": { "tic_count": 2 },
+    "emotional": { "stress": 3 },
+    "physiological": { "sleep_hours": 7.1 },
+    "cognitive_load": { "study_minutes": 120 },
+    "custom": [{ "name": "Exercise", "effect": -3 }]
   },
   {
     "date": "2025-02-04",
-    "symptoms": {
-      "tic_count": 3
-    },
-    "emotional": {
-      "stress": 5
-    },
-    "physiological": {
-      "sleep_hours": 6.8
-    },
-    "cognitive_load": {
-      "study_minutes": 172
-    },
-    "custom": [
-      {
-        "name": "Exercise",
-        "effect": -3
-      }
-    ]
+    "symptoms": { "tic_count": 7 },
+    "emotional": { "stress": 4 },
+    "physiological": { "sleep_hours": 9.5 },
+    "cognitive_load": { "study_minutes": 150 },
+    "custom": [{ "name": "Slept in", "effect": 2 }]
   },
   {
     "date": "2025-02-05",
-    "symptoms": {
-      "tic_count": 3
-    },
-    "emotional": {
-      "stress": 4
-    },
-    "physiological": {
-      "sleep_hours": 6.7
-    },
-    "cognitive_load": {
-      "study_minutes": 155
-    },
-    "custom": [
-      {
-        "name": "Nature walk",
-        "effect": -4
-      }
-    ]
+    "symptoms": { "tic_count": 3 },
+    "emotional": { "stress": 4 },
+    "physiological": { "sleep_hours": 6.9 },
+    "cognitive_load": { "study_minutes": 135 },
+    "custom": [{ "name": "Meditation", "effect": -3 }]
   },
   {
     "date": "2025-02-06",
-    "symptoms": {
-      "tic_count": 5
-    },
-    "emotional": {
-      "stress": 6
-    },
-    "physiological": {
-      "sleep_hours": 6.7
-    },
-    "cognitive_load": {
-      "study_minutes": 121
-    },
-    "custom": [
-      {
-        "name": "Meditation",
-        "effect": -4
-      }
-    ]
+    "symptoms": { "tic_count": 5 },
+    "emotional": { "stress": 3 },
+    "physiological": { "sleep_hours": 8.8 },
+    "cognitive_load": { "study_minutes": 110 },
+    "custom": [{ "name": "Slept in", "effect": 2 }]
   },
   {
     "date": "2025-02-07",
-    "symptoms": {
-      "tic_count": 5
-    },
-    "emotional": {
-      "stress": 6
-    },
-    "physiological": {
-      "sleep_hours": 6.3
-    },
-    "cognitive_load": {
-      "study_minutes": 179
-    },
-    "custom": [
-      {
-        "name": "Deadline pressure",
-        "effect": 3
-      }
-    ]
+    "symptoms": { "tic_count": 2 },
+    "emotional": { "stress": 3 },
+    "physiological": { "sleep_hours": 7.0 },
+    "cognitive_load": { "study_minutes": 125 },
+    "custom": [{ "name": "Nature walk", "effect": -3 }]
   },
   {
     "date": "2025-02-08",
-    "symptoms": {
-      "tic_count": 3
-    },
-    "emotional": {
-      "stress": 5
-    },
-    "physiological": {
-      "sleep_hours": 6.2
-    },
-    "cognitive_load": {
-      "study_minutes": 173
-    },
-    "custom": [
-      {
-        "name": "Nature walk",
-        "effect": -4
-      }
-    ]
+    "symptoms": { "tic_count": 8 },
+    "emotional": { "stress": 4 },
+    "physiological": { "sleep_hours": 10.0 },
+    "cognitive_load": { "study_minutes": 145 },
+    "custom": [{ "name": "Slept in", "effect": 2 }]
   },
   {
     "date": "2025-02-09",
-    "symptoms": {
-      "tic_count": 4
-    },
-    "emotional": {
-      "stress": 4
-    },
-    "physiological": {
-      "sleep_hours": 6.3
-    },
-    "cognitive_load": {
-      "study_minutes": 149
-    },
-    "custom": [
-      {
-        "name": "Meditation",
-        "effect": -4
-      }
-    ]
+    "symptoms": { "tic_count": 3 },
+    "emotional": { "stress": 4 },
+    "physiological": { "sleep_hours": 7.2 },
+    "cognitive_load": { "study_minutes": 155 },
+    "custom": [{ "name": "Exercise", "effect": -3 }]
   },
   {
     "date": "2025-02-10",
-    "symptoms": {
-      "tic_count": 4
-    },
-    "emotional": {
-      "stress": 5
-    },
-    "physiological": {
-      "sleep_hours": 6.3
-    },
-    "cognitive_load": {
-      "study_minutes": 146
-    },
-    "custom": [
-      {
-        "name": "Deadline pressure",
-        "effect": 3
-      }
-    ]
+    "symptoms": { "tic_count": 6 },
+    "emotional": { "stress": 5 },
+    "physiological": { "sleep_hours": 9.0 },
+    "cognitive_load": { "study_minutes": 130 },
+    "custom": [{ "name": "Slept in", "effect": 2 }]
   },
   {
     "date": "2025-02-11",
-    "symptoms": {
-      "tic_count": 5
-    },
-    "emotional": {
-      "stress": 4
-    },
-    "physiological": {
-      "sleep_hours": 6.5
-    },
-    "cognitive_load": {
-      "study_minutes": 149
-    },
-    "custom": [
-      {
-        "name": "Exercise",
-        "effect": -3
-      }
-    ]
+    "symptoms": { "tic_count": 2 },
+    "emotional": { "stress": 3 },
+    "physiological": { "sleep_hours": 7.0 },
+    "cognitive_load": { "study_minutes": 140 },
+    "custom": [{ "name": "Meditation", "effect": -3 }]
   },
   {
     "date": "2025-02-12",
-    "symptoms": {
-      "tic_count": 5
-    },
-    "emotional": {
-      "stress": 6
-    },
-    "physiological": {
-      "sleep_hours": 6.6
-    },
-    "cognitive_load": {
-      "study_minutes": 134
-    },
-    "custom": [
-      {
-        "name": "Caffeine",
-        "effect": 2
-      }
-    ]
+    "symptoms": { "tic_count": 7 },
+    "emotional": { "stress": 4 },
+    "physiological": { "sleep_hours": 9.3 },
+    "cognitive_load": { "study_minutes": 160 },
+    "custom": [{ "name": "Slept in", "effect": 2 }]
   },
   {
     "date": "2025-02-13",
-    "symptoms": {
-      "tic_count": 4
-    },
-    "emotional": {
-      "stress": 6
-    },
-    "physiological": {
-      "sleep_hours": 6.6
-    },
-    "cognitive_load": {
-      "study_minutes": 137
-    },
-    "custom": [
-      {
-        "name": "Nature walk",
-        "effect": -4
-      }
-    ]
+    "symptoms": { "tic_count": 3 },
+    "emotional": { "stress": 3 },
+    "physiological": { "sleep_hours": 6.8 },
+    "cognitive_load": { "study_minutes": 120 },
+    "custom": [{ "name": "Nature walk", "effect": -3 }]
   },
   {
     "date": "2025-02-14",
-    "symptoms": {
-      "tic_count": 5
-    },
-    "emotional": {
-      "stress": 6
-    },
-    "physiological": {
-      "sleep_hours": 6.8
-    },
-    "cognitive_load": {
-      "study_minutes": 167
-    },
-    "custom": [
-      {
-        "name": "Meditation",
-        "effect": -4
-      }
-    ]
+    "symptoms": { "tic_count": 5 },
+    "emotional": { "stress": 4 },
+    "physiological": { "sleep_hours": 8.5 },
+    "cognitive_load": { "study_minutes": 145 },
+    "custom": [{ "name": "Slept in", "effect": 2 }]
   },
   {
     "date": "2025-02-15",
-    "symptoms": {
-      "tic_count": 3
-    },
-    "emotional": {
-      "stress": 5
-    },
-    "physiological": {
-      "sleep_hours": 6.9
-    },
-    "cognitive_load": {
-      "study_minutes": 180
-    },
-    "custom": [
-      {
-        "name": "Exam stress",
-        "effect": 4
-      }
-    ]
+    "symptoms": { "tic_count": 2 },
+    "emotional": { "stress": 3 },
+    "physiological": { "sleep_hours": 7.0 },
+    "cognitive_load": { "study_minutes": 130 },
+    "custom": [{ "name": "Exercise", "effect": -3 }]
   }
 ]

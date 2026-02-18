@@ -39,9 +39,8 @@ def calculate_daily_metrics(data):
         neg_impact = 0
         if isinstance(row, list):
             for factor in row:
-                level = factor.get('level', 0)
                 effect = factor.get('effect', 0)
-                impact = level * effect
+                impact = effect
                 if impact > 0:
                     pos_impact += impact
                 elif impact < 0:
@@ -433,21 +432,13 @@ def calculate_sleep_analysis(data):
     
     sleep_hours = []
     tic_counts = []
-    good_sleep_tics = []
-    bad_sleep_tics = []
     
     for entry in recent_data:
         sleep = entry.get('physiological', {}).get('sleep_hours', 0)
         tic_count = entry.get('symptoms', {}).get('tic_count', 0)
-        
         if sleep > 0:
             sleep_hours.append(float(sleep))
             tic_counts.append(float(tic_count))
-            
-            if 7 <= sleep <= 9:
-                good_sleep_tics.append(float(tic_count))
-            elif sleep < 6:
-                bad_sleep_tics.append(float(tic_count))
     
     if len(sleep_hours) < 5:
         return {
@@ -458,8 +449,26 @@ def calculate_sleep_analysis(data):
     
     avg_sleep = round(mean(sleep_hours), 1)
     correlation = calculate_pearson_correlation(sleep_hours, tic_counts)
+    
+    # --- SMART: find this person's optimal sleep range from their data ---
+    # Sort days by tic count and find what sleep hours the best days share
+    paired = sorted(zip(tic_counts, sleep_hours), key=lambda x: x[0])
+    
+    best_days_sleep = [s for _, s in paired[:len(paired)//3]]   # bottom third tics = best days
+    worst_days_sleep = [s for _, s in paired[-(len(paired)//3):]]  # top third tics = worst days
+    
+    optimal_sleep = round(mean(best_days_sleep), 1) if best_days_sleep else avg_sleep
+    worst_sleep = round(mean(worst_days_sleep), 1) if worst_days_sleep else avg_sleep
+    
+    # Build "good" and "bad" buckets using a window around optimal
+    tolerance = 0.75
+    good_sleep_tics = [t for s, t in zip(sleep_hours, tic_counts)
+                       if abs(s - optimal_sleep) <= tolerance]
+    bad_sleep_tics  = [t for s, t in zip(sleep_hours, tic_counts)
+                       if abs(s - optimal_sleep) > tolerance * 2]
+    
     avg_good_sleep_tics = round(mean(good_sleep_tics), 1) if good_sleep_tics else None
-    avg_bad_sleep_tics = round(mean(bad_sleep_tics), 1) if bad_sleep_tics else None
+    avg_bad_sleep_tics  = round(mean(bad_sleep_tics), 1)  if bad_sleep_tics  else None
     
     if avg_good_sleep_tics and avg_bad_sleep_tics and avg_good_sleep_tics > 0:
         percent_diff = round(
@@ -469,16 +478,16 @@ def calculate_sleep_analysis(data):
         percent_diff = None
     
     insight = generate_sleep_insight(
-        avg_sleep,
-        correlation,
-        percent_diff,
-        avg_good_sleep_tics,
-        avg_bad_sleep_tics
+        avg_sleep, correlation, percent_diff,
+        avg_good_sleep_tics, avg_bad_sleep_tics,
+        optimal_sleep=optimal_sleep,
+        worst_sleep=worst_sleep
     )
     
     return {
         'avg_sleep_hours': avg_sleep,
         'correlation_coefficient': correlation,
+        'optimal_sleep_hours': optimal_sleep,
         'avg_tics_good_sleep': avg_good_sleep_tics,
         'avg_tics_bad_sleep': avg_bad_sleep_tics,
         'percent_difference': percent_diff,
@@ -507,7 +516,9 @@ def calculate_pearson_correlation(x_values, y_values):
     return round(correlation, 2)
 
 
-def generate_sleep_insight(avg_sleep, correlation, percent_diff, good_tics, bad_tics):
+def generate_sleep_insight(avg_sleep, correlation, percent_diff, 
+                            good_tics, bad_tics, optimal_sleep=7.5, worst_sleep=None):
+    
     if avg_sleep < 6:
         sleep_status = "⚠️ You're averaging only {:.1f} hours of sleep per night - that's below the recommended 7-9 hours for teens.".format(avg_sleep)
     elif avg_sleep < 7:
@@ -532,17 +543,21 @@ def generate_sleep_insight(avg_sleep, correlation, percent_diff, good_tics, bad_
     
     if good_tics is not None and bad_tics is not None and percent_diff is not None:
         if percent_diff > 0:
-            comparison = " On days you sleep under 6 hours, your tics average {:.1f}. On days with 7-9 hours, they drop to {:.1f} - that's a {}% improvement!".format(
-                bad_tics, good_tics, percent_diff
+            comparison = (
+                f" Your data shows your personal sweet spot is around "
+                f"{optimal_sleep}hrs — on those nights your tics average {good_tics:.1f}. "
+                f"When sleep deviates significantly, tics rise to {bad_tics:.1f} "
+                f"— that's a {percent_diff}% difference!"
             )
         elif percent_diff < 0:
-            comparison = " Surprisingly, on days with 7-9 hours of sleep, your tics average {:.1f}, compared to {:.1f} on shorter sleep days.".format(
-                good_tics, bad_tics
+            comparison = (
+                f" Interestingly, nights near {optimal_sleep}hrs give you "
+                f"{good_tics:.1f} avg tics vs {bad_tics:.1f} on other nights."
             )
         else:
-            comparison = " Your tic levels are similar regardless of sleep duration."
+            comparison = " Your tic levels are similar across different sleep amounts."
     else:
-        comparison = " Track a few more days to compare tic levels between good and bad sleep days."
+        comparison = " Track a few more days to compare tic levels across sleep amounts."
     
     return sleep_status + corr_text + comparison
 
