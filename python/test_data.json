@@ -1,66 +1,194 @@
 [
   {
-    "date": "2025-02-01",
-    "symptoms": { "tic_count": 3 },
-    "emotional": { "stress": 3 },
-    "physiological": { "sleep_hours": 7.2 },
-    "cognitive_load": { "study_minutes": 140 },
-    "custom": [{ "name": "Nature walk", "effect": -2 }]
+    "date": "2026-02-12",
+    "symptoms": {
+      "tic_count": 6
+    },
+    "emotional": {
+      "stress": 3
+    },
+    "physiological": {
+      "sleep_hours": 8.2
+    },
+    "cognitive_load": {
+      "study_minutes": 90
+    },
+    "custom": [
+      {
+        "name": "Nature Walk",
+        "effect": -4
+      },
+      {
+        "name": "Screen Time",
+        "effect": 2
+      }
+    ]
   },
   {
-    "date": "2025-02-02",
-    "symptoms": { "tic_count": 5 },
-    "emotional": { "stress": 5 },
-    "physiological": { "sleep_hours": 6.4 },
-    "cognitive_load": { "study_minutes": 200 },
-    "custom": [{ "name": "Caffeine", "effect": 3 }]
+    "date": "2026-02-13",
+    "symptoms": {
+      "tic_count": 7
+    },
+    "emotional": {
+      "stress": 2
+    },
+    "physiological": {
+      "sleep_hours": 8.8
+    },
+    "cognitive_load": {
+      "study_minutes": 60
+    },
+    "custom": [
+      {
+        "name": "Yoga",
+        "effect": -4
+      },
+      {
+        "name": "Loud Environment",
+        "effect": 1
+      }
+    ]
   },
   {
-    "date": "2025-02-03",
-    "symptoms": { "tic_count": 2 },
-    "emotional": { "stress": 2 },
-    "physiological": { "sleep_hours": 7.8 },
-    "cognitive_load": { "study_minutes": 90 },
-    "custom": [{ "name": "Yoga", "effect": -5 }]
+    "date": "2026-02-14",
+    "symptoms": {
+      "tic_count": 11
+    },
+    "emotional": {
+      "stress": 8
+    },
+    "physiological": {
+      "sleep_hours": 5.0
+    },
+    "cognitive_load": {
+      "study_minutes": 220
+    },
+    "custom": [
+      {
+        "name": "Screen Time",
+        "effect": 6
+      }
+    ]
   },
   {
-    "date": "2025-02-04",
-    "symptoms": { "tic_count": 4 },
-    "emotional": { "stress": 6 },
-    "physiological": { "sleep_hours": 6.1 },
-    "cognitive_load": { "study_minutes": 170 },
-    "custom": [{ "name": "Meditation", "effect": -1 }]
+    "date": "2026-02-15",
+    "symptoms": {
+      "tic_count": 6
+    },
+    "emotional": {
+      "stress": 3
+    },
+    "physiological": {
+      "sleep_hours": 8.0
+    },
+    "cognitive_load": {
+      "study_minutes": 80
+    },
+    "custom": [
+      {
+        "name": "Nature Walk",
+        "effect": -5
+      },
+      {
+        "name": "Loud Environment",
+        "effect": 2
+      }
+    ]
   },
   {
-    "date": "2025-02-05",
-    "symptoms": { "tic_count": 3 },
-    "emotional": { "stress": 3 },
-    "physiological": { "sleep_hours": 7.5 },
-    "cognitive_load": { "study_minutes": 110 },
-    "custom": [{ "name": "Nature walk", "effect": -4 }]
+    "date": "2026-02-16",
+    "symptoms": {
+      "tic_count": 11
+    },
+    "emotional": {
+      "stress": 8
+    },
+    "physiological": {
+      "sleep_hours": 4.8
+    },
+    "cognitive_load": {
+      "study_minutes": 240
+    },
+    "custom": [
+      {
+        "name": "Screen Time",
+        "effect": 7
+      }
+    ]
   },
   {
-    "date": "2025-02-06",
-    "symptoms": { "tic_count": 5 },
-    "emotional": { "stress": 5 },
-    "physiological": { "sleep_hours": 6.6 },
-    "cognitive_load": { "study_minutes": 190 },
-    "custom": [{ "name": "Exercise", "effect": -2 }]
+    "date": "2026-02-17",
+    "symptoms": {
+      "tic_count": 6
+    },
+    "emotional": {
+      "stress": 3
+    },
+    "physiological": {
+      "sleep_hours": 7.8
+    },
+    "cognitive_load": {
+      "study_minutes": 100
+    },
+    "custom": [
+      {
+        "name": "Yoga",
+        "effect": -4
+      },
+      {
+        "name": "Loud Environment",
+        "effect": 2
+      }
+    ]
   },
   {
-    "date": "2025-02-07",
-    "symptoms": { "tic_count": 3 },
-    "emotional": { "stress": 4 },
-    "physiological": { "sleep_hours": 7.0 },
-    "cognitive_load": { "study_minutes": 150 },
-    "custom": [{ "name": "Yoga", "effect": -3 }]
+    "date": "2026-02-18",
+    "symptoms": {
+      "tic_count": 7
+    },
+    "emotional": {
+      "stress": 3
+    },
+    "physiological": {
+      "sleep_hours": 8.1
+    },
+    "cognitive_load": {
+      "study_minutes": 85
+    },
+    "custom": [
+      {
+        "name": "Box Breathing",
+        "effect": -2
+      },
+      {
+        "name": "Screen Time",
+        "effect": 2
+      }
+    ]
   },
   {
-    "date": "2025-02-08",
-    "symptoms": { "tic_count": 6 },
-    "emotional": { "stress": 6 },
-    "physiological": { "sleep_hours": 5.8 },
-    "cognitive_load": { "study_minutes": 210 },
-    "custom": [{ "name": "Deadline pressure", "effect": 3 }]
+    "date": "2026-02-19",
+    "symptoms": {
+      "tic_count": 11
+    },
+    "emotional": {
+      "stress": 9
+    },
+    "physiological": {
+      "sleep_hours": 4.5
+    },
+    "cognitive_load": {
+      "study_minutes": 280
+    },
+    "custom": [
+      {
+        "name": "Screen Time",
+        "effect": 8
+      },
+      {
+        "name": "Loud Environment",
+        "effect": 6
+      }
+    ]
   }
 ]
