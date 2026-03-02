@@ -282,5 +282,43 @@
     "screen": {"screen_time_hours": 1},
     "cognitive_load": {"study_minutes": 0},
     "physiological": {"sleep_hours": 7.5}
+  },
+  {
+    "date": "2026-02-28",
+    "symptoms": {"tic_count": 4},
+    "journal": "",
+    "social": {"social_conflict": false},
+    "emotional": {"stress": 6},
+    "custom": [],
+    "screen": {"screen_time_hours": 2},
+    "cognitive_load": {"study_minutes": 660},
+    "physiological": {"sleep_hours": 7.5}
+  },
+  {
+    "date": "2026-03-01",
+    "symptoms": {"tic_count": 4},
+    "journal": "test today was a holiday ",
+    "social": {"social_conflict": false},
+    "emotional": {"stress": 6},
+    "custom": [
+      {
+        "level": 3,
+        "effect": 1,
+        "name": "big fight with friend"
+      },
+      {
+        "level": 4,
+        "effect": 1,
+        "name": "exam upcoming"
+      },
+      {
+        "level": 3,
+        "effect": -1,
+        "name": "night drive"
+      }
+    ],
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 540},
+    "physiological": {"sleep_hours": 7.5}
   }
 ]

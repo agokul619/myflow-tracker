@@ -72,9 +72,6 @@ Your log data, auto-created
 **reports/**
 Generated HTML reports
 
-**backups/**
-Automatic data backups
-
 The Java app and Python service communicate over **localhost:5000**. You must start the Python server before running analysis.
 
 ---
