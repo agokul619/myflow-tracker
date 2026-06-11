@@ -624,6 +624,6 @@ if __name__ == '__main__':
     print("  POST /api/protective-factors")
     print("  POST /api/regression  <-- NEW!")
     
-    print("Server running on http://127.0.0.1:5000")
+    print("Server running on http:/AQZ!Œ/127.0.0.1:5000")
     print("="*50 + "\n")
     app.run(debug=True, port=5000, host='127.0.0.1')
