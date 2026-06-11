@@ -206,7 +206,8 @@ img {{ max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0; }}
             card_class = "day-card gold" if medal == "🥇" else "day-card"
             factors_str = ", ".join(day.get('factors', [])) if day.get('factors') else "Natural good day!"
             
-            html += f"""
+            html += f"""3-+
+            
 <div class='{card_class}'>
 <div class='day-date'>{medal} {day.get('date', 'N/A')}</div>
 <div class='day-tnl'>{current_tnl}</div>

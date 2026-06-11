@@ -320,5 +320,20 @@
     "screen": {"screen_time_hours": 1},
     "cognitive_load": {"study_minutes": 540},
     "physiological": {"sleep_hours": 7.5}
+  },
+  {
+    "date": "2026-06-08",
+    "symptoms": {"tic_count": 5},
+    "journal": "",
+    "social": {"social_conflict": false},
+    "emotional": {"stress": 4},
+    "custom": [{
+      "level": 2,
+      "effect": -1,
+      "name": "sleeping"
+    }],
+    "screen": {"screen_time_hours": 1},
+    "cognitive_load": {"study_minutes": 480},
+    "physiological": {"sleep_hours": 8.5}
   }
 ]

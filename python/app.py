@@ -14,6 +14,11 @@ import math
 from statistics import mean
 from collections import defaultdict
 
+
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_absolute_error
+
+
 app = Flask(__name__)
 
 def calculate_daily_metrics(data):
@@ -45,6 +50,11 @@ def calculate_daily_metrics(data):
         df['normalized_study'] +
         df['positive_custom_impact']
     )
+
+    # Ensure sleep column exists even if missing
+    if 'physiological.sleep_hours' not in df.columns:
+        df['physiological.sleep_hours'] = 0
+        
     metrics_df = pd.DataFrame({
         'date': pd.to_datetime(df['date']),
         'tics': pd.to_numeric(df['symptoms.tic_count'], errors='coerce').fillna(0),
@@ -53,10 +63,10 @@ def calculate_daily_metrics(data):
         'study_contrib': df['normalized_study'],
         'pos_custom_contrib': df['positive_custom_impact'],
         'neg_custom_contrib': df['negative_custom_impact'].abs(),
-        'raw_neg_impact': df['negative_custom_impact']
+        'raw_neg_impact': df['negative_custom_impact'],
+        'sleep': pd.to_numeric(df['physiological.sleep_hours'], errors='coerce').fillna(0)
     })
     return metrics_df.set_index('date').sort_index()
-
 
 def analyze_protective_factors(data):
     factor_data = defaultdict(lambda: {
@@ -448,6 +458,52 @@ def get_protective_factor_analysis():
     except Exception as e:
         print(f"Error in protective factor analysis: {e}")
         return jsonify({"error": f"Protective factor analysis failed: {str(e)}", "success": False}), 500
+    
+
+
+@app.route('/api/regression', methods=['POST'])
+def get_regression():
+    if not request.json:
+        return jsonify({"error": "Missing JSON payload"}), 400
+    data = request.json
+    try:
+        metrics_df = calculate_daily_metrics(data)
+        
+        if len(metrics_df) < 3:
+            return jsonify({"error": "Need at least 3 days of data for regression", "success": False}), 400
+        
+        tnl_values = metrics_df['TNL'].values
+        tic_values = metrics_df['tics'].values
+        
+        # fit a degree-1 polynomial (straight line) — returns [slope, intercept]
+        slope, intercept = np.polyfit(tnl_values, tic_values, 1)
+        
+        # calculate R² manually
+        predicted = slope * tnl_values + intercept
+        ss_res = np.sum((tic_values - predicted) ** 2)
+        ss_tot = np.sum((tic_values - np.mean(tic_values)) ** 2)
+        r_squared = 1 - (ss_res / ss_tot) if ss_tot != 0 else 0
+        
+        # build a human-readable interpretation
+        direction = "increases" if slope > 0 else "decreases"
+        interpretation = (
+            f"For every 1-unit increase in Total Negative Load, "
+            f"your tic count {direction} by {abs(slope):.2f}. "
+            f"This model explains {r_squared * 100:.1f}% of your tic variation (R²={r_squared:.2f})."
+        )
+        
+        return jsonify({
+            "success": True,
+            "slope": round(slope, 3),
+            "intercept": round(intercept, 3),
+            "r_squared": round(r_squared, 3),
+            "interpretation": interpretation,
+            "days_analyzed": len(metrics_df)
+        })
+    
+    except Exception as e:
+        print(f"Regression error: {e}")
+        return jsonify({"error": f"Regression failed: {str(e)}", "success": False}), 500
 
 
 @app.route('/api/sleep-analysis', methods=['POST'])
@@ -471,18 +527,92 @@ def get_visualization():
         metrics_df = calculate_daily_metrics(data)
         recommendation = generate_pacing_recommendation(metrics_df)
         img_base64 = generate_visualization(metrics_df)
+
+        # ---------------------------------------------------------
+        # 🚀 PREDICTION PROJECT V1: LAGGED DATASET & ML FORECAST
+        # ---------------------------------------------------------
+        forecast_summary = "Not enough data for forecasting."
+        forecast_equation = "Need at least 4 days of data."
+        forecast_evaluation = "Keep tracking to unlock ML predictions!"
+        
+        if len(metrics_df) >= 4:
+            # 1. Feature Engineering: Create the Lagged Dataset
+            ml_df = metrics_df.copy()
+            # Shift tics UP by one row to represent "Tomorrow's Tics"
+            ml_df['tics_tomorrow'] = ml_df['tics'].shift(-1)
+            
+            # Drop the last day for training (because we don't know tomorrow's tics yet)
+            train_df = ml_df.dropna(subset=['tics_tomorrow'])
+            
+            # 2. Train Multiple Linear Regression Model
+            X_train = train_df[['TNL', 'sleep']]
+            y_train = train_df['tics_tomorrow']
+            
+            model = LinearRegression()
+            model.fit(X_train, y_train)
+            
+            # 3. Model Evaluation vs Baseline (Baseline = guessing tomorrow is same as today)
+            predictions = model.predict(X_train)
+            baseline_preds = train_df['tics'] 
+            
+            mae_model = mean_absolute_error(y_train, predictions)
+            mae_baseline = mean_absolute_error(y_train, baseline_preds)
+            
+            improvement = 0
+            if mae_baseline > 0:
+                improvement = ((mae_baseline - mae_model) / mae_baseline) * 100
+                
+            # 4. Predict ACTUAL Tomorrow using Today's Data
+            latest_day = metrics_df.iloc[-1]
+            X_latest = pd.DataFrame({'TNL': [latest_day['TNL']], 'sleep': [latest_day['sleep']]})
+            tomorrow_pred = max(0, model.predict(X_latest)[0]) # Prevent negative tics
+            
+            w_tnl = model.coef_[0]
+            w_sleep = model.coef_[1]
+            intercept = model.intercept_
+            
+            confidence = "High 🟢" if improvement > 20 else "Moderate 🟡" if improvement > 0 else "Low 🔴"
+            
+            forecast_summary = f"Predicted Tics: {tomorrow_pred:.1f} | Confidence: {confidence}"
+            forecast_equation = f"Tomorrow's Tics = ({w_tnl:.2f} × TNL) + ({w_sleep:.2f} × Sleep) + {intercept:.2f}"
+            
+            if improvement > 0:
+                forecast_evaluation = f"Our predictive model reduced forecasting error by {improvement:.1f}% compared to a simple baseline moving average (MAE: {mae_model:.2f} vs {mae_baseline:.2f})."
+            else:
+                forecast_evaluation = f"Model is still learning your baseline. Current Error (MAE): {mae_model:.2f}."
+
+        # Original single-variable regression logic
+        tnl_values = metrics_df['TNL'].values
+        tic_values = metrics_df['tics'].values
+        slope, intercept_single = np.polyfit(tnl_values, tic_values, 1)
+        predicted_single = slope * tnl_values + intercept_single
+        ss_res = np.sum((tic_values - predicted_single) ** 2)
+        ss_tot = np.sum((tic_values - np.mean(tic_values)) ** 2)
+        r_squared = 1 - (ss_res / ss_tot) if ss_tot != 0 else 0
+        direction = "increases" if slope > 0 else "decreases"
+        regression_text = (
+            f"For every 1-unit increase in Total Negative Load, "
+            f"your tic count {direction} by {abs(slope):.2f}. "
+            f"This model explains {r_squared * 100:.1f}% of your tic variation (R²={r_squared:.2f})."
+        )
+
         return jsonify({
             "pacing_recommendation": recommendation["message"],
             "pacing_state": recommendation["pacing_state"],
             "latest_load": recommendation.get("latest_load"),
             "load_threshold": recommendation.get("load_threshold"),
             "graph_image_base64": img_base64,
+            "regression_insight": regression_text,
+            "r_squared": round(r_squared, 3),
+            "forecast_summary": forecast_summary,
+            "forecast_equation": forecast_equation,
+            "forecast_evaluation": forecast_evaluation,
             "success": True
         })
     except Exception as e:
         print(f"An error occurred during analysis: {e}")
         return jsonify({"error": f"Internal Server Error during analysis: {str(e)}"}), 500
-
+    
 
 if __name__ == '__main__':
     print("\n" + "="*50)
@@ -491,7 +621,9 @@ if __name__ == '__main__':
     print("API Endpoints:")
     print("  POST /api/visualization")
     print("  POST /api/sleep-analysis")
-    print("  POST /api/protective-factors  <-- NEW!")
+    print("  POST /api/protective-factors")
+    print("  POST /api/regression  <-- NEW!")
+    
     print("Server running on http://127.0.0.1:5000")
     print("="*50 + "\n")
     app.run(debug=True, port=5000, host='127.0.0.1')

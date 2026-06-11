@@ -162,8 +162,44 @@ public class DiagnosticsPanel extends JPanel {
         return jsonString;
     }
     
+    
+    public void displayResultsWithRegression(String htmlFilePath, String regressionInsight) {
+        try {
+            File reportFile = new File(htmlFilePath);
+            if (!reportFile.exists()) {
+                displayError("Report file not found: " + htmlFilePath);
+                return;
+            }
+            
+            // read the generated HTML file
+            String htmlContent = new String(java.nio.file.Files.readAllBytes(reportFile.toPath()));
+            System.out.println("CONTAINS BODY TAG: " + htmlContent.contains("</body>"));
+            System.out.println("REGRESSION INSIGHT: " + regressionInsight);
+            // build the regression section to inject
+            String regressionSection =
+                "<section style='margin-top: 2rem; padding: 1rem; background: #f0f4ff; " +
+                "border-left: 4px solid #4361ee; border-radius: 8px;'>" +
+                "<h2 style='font-size: 1.1rem; font-weight: 600; color: #1a1a2e; margin-bottom: 0.5rem;'>" +
+                "📈 Linear Regression Finding</h2>" +
+                "<p style='color: #1a1a2e; font-size: 0.95rem;'>" + regressionInsight + "</p>" +
+                "</section>";
+            
+            // inject it just before the closing </body> tag
+            String modifiedHtml = htmlContent.replace("</body>", regressionSection + "</body>");
+            
+            // write the modified HTML back to the file
+            java.nio.file.Files.writeString(reportFile.toPath(), modifiedHtml);
+            
+            // now display it normally
+            displayResults(htmlFilePath);
+            
+        } catch (Exception e) {
+            displayError("Error injecting regression: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
     private void handleRunDiagnostics() {
-        // Get selected range
         String selected = (String) rangeCombo.getSelectedItem();
         int days = extractDaysFromRange(selected);
         
@@ -172,6 +208,7 @@ public class DiagnosticsPanel extends JPanel {
         
         AnalysisClient ac = new AnalysisClient();
         String res = getJsonPayload();
+
         
         try {
             String reportPath = ac.runAnalysis(res, days);
@@ -185,6 +222,15 @@ public class DiagnosticsPanel extends JPanel {
             runButton.setEnabled(true);
         }
     }
+    
+    
+    
+    
+    
+
+    
+    
+    
     
     private int extractDaysFromRange(String rangeText) {
         // Extract number from "Last X Days"
