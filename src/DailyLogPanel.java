@@ -47,6 +47,7 @@ public class DailyLogPanel extends JPanel {
         
         initializeUI();
         loadToday();
+        
     }
     
     private void initializeUI() {
@@ -68,6 +69,13 @@ public class DailyLogPanel extends JPanel {
         // Section 2: Personalized Factors
         mainContent.add(createCustomFactorsPanel());
         mainContent.add(Box.createVerticalStrut(15));
+        
+        
+        
+        mainContent.add(createInstagramPanel());
+        mainContent.add(Box.createVerticalStrut(15));
+        
+        
         
         // Section 3: Journal Entry
         mainContent.add(createJournalPanel());
@@ -280,10 +288,15 @@ public class DailyLogPanel extends JPanel {
         addFactorButton.setFocusPainted(false);
         addFactorButton.addActionListener(e -> addCustomFactorRow());
         
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        
+    
+        
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 0));
         buttonPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
         buttonPanel.add(addFactorButton);
         panel.add(buttonPanel);
+        
+        
         
         return panel;
     }
@@ -457,4 +470,68 @@ public class DailyLogPanel extends JPanel {
         
         journalArea.setText("");
     }
+    
+  
+    
+    private void triggerInstagramImport() {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Select Instagram JSON Data");
+        
+        // Only allow .json files to be selected
+        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("JSON Files", "json"));
+        
+        int userSelection = fileChooser.showOpenDialog(this);
+        
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            java.io.File fileToProcess = fileChooser.getSelectedFile();
+            
+            // TODO: Later, we will send fileToProcess to Python here!
+            // For now, let's pop up the labeling dialog to test the UI flow.
+            java.util.List<String> mockUnknowns = java.util.Arrays.asList(
+                "sarah_smith_123", "cupertino_fbla", "josh_b_ball"
+            );
+            
+            InstagramLabelingDialog dialog = new InstagramLabelingDialog(
+                (Frame) SwingUtilities.getWindowAncestor(this), 
+                mockUnknowns
+            );
+            dialog.setVisible(true); // Pauses here until the user clicks Save
+            
+            if (dialog.isSaved()) {
+                JOptionPane.showMessageDialog(this, 
+                    "Successfully imported " + fileToProcess.getName() + " and saved tags!", 
+                    "Import Complete", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }  
+    
+    
+    
+    private JPanel createInstagramPanel() {
+        JPanel panel = new JPanel(new BorderLayout(10, 10));
+        panel.setBorder(createSectionBorder("3. Passive Data (Instagram)"));
+
+        JLabel description = new JLabel("<html>Import your Instagram JSON data to calculate your algorithmic stress load and tag peer content.</html>");
+        description.setFont(new Font("Arial", Font.PLAIN, 12));
+        description.setForeground(Color.GRAY);
+        panel.add(description, BorderLayout.NORTH);
+
+        JButton importIgButton = new JButton(" Import Instagram JSON");
+        importIgButton.setFont(new Font("Arial", Font.BOLD, 13));
+        importIgButton.setBackground(new Color(225, 48, 108)); // Instagram Pink
+        importIgButton.setForeground(Color.DARK_GRAY);
+        importIgButton.setFocusPainted(false);
+        importIgButton.setPreferredSize(new Dimension(220, 40));
+        importIgButton.addActionListener(e -> triggerInstagramImport());
+
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        buttonPanel.add(importIgButton);
+        panel.add(buttonPanel, BorderLayout.CENTER);
+
+        return panel;
+    }
+    
+    
+    
 }
