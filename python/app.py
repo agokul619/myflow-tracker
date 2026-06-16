@@ -524,62 +524,63 @@ def get_visualization():
         return jsonify({"error": "Missing JSON payload"}), 400
     data = request.json
     try:
+
         metrics_df = calculate_daily_metrics(data)
+
         recommendation = generate_pacing_recommendation(metrics_df)
         img_base64 = generate_visualization(metrics_df)
 
-        # ---------------------------------------------------------
-        # 🚀 PREDICTION PROJECT V1: LAGGED DATASET & ML FORECAST
+       
+       # ---------------------------------------------------------
+        # 🚀 THE ML ENGINE: CHAMPION VS CHALLENGER
         # ---------------------------------------------------------
         forecast_summary = "Not enough data for forecasting."
-        forecast_equation = "Need at least 4 days of data."
+        forecast_equation = "Need at least 5 days of data."
         forecast_evaluation = "Keep tracking to unlock ML predictions!"
         
-        if len(metrics_df) >= 4:
-            # 1. Feature Engineering: Create the Lagged Dataset
+        if len(metrics_df) >= 5:
+            # 1. Feature Engineering (The Lagged Dataset)
             ml_df = metrics_df.copy()
-            # Shift tics UP by one row to represent "Tomorrow's Tics"
             ml_df['tics_tomorrow'] = ml_df['tics'].shift(-1)
+            ml_df['sleep_squared'] = ml_df['sleep'] ** 2
             
-            # Drop the last day for training (because we don't know tomorrow's tics yet)
             train_df = ml_df.dropna(subset=['tics_tomorrow'])
-            
-            # 2. Train Multiple Linear Regression Model
-            X_train = train_df[['TNL', 'sleep']]
             y_train = train_df['tics_tomorrow']
             
-            model = LinearRegression()
-            model.fit(X_train, y_train)
+            # 2. Train Model A: Standard Linear (Straight Line)
+            X_linear = train_df[['TNL', 'sleep']]
+            model_linear = LinearRegression()
+            model_linear.fit(X_linear, y_train)
+            mae_linear = mean_absolute_error(y_train, model_linear.predict(X_linear))
             
-            # 3. Model Evaluation vs Baseline (Baseline = guessing tomorrow is same as today)
-            predictions = model.predict(X_train)
-            baseline_preds = train_df['tics'] 
+            # 3. Train Model B: Polynomial (U-Shaped Curve)
+            X_poly = train_df[['TNL', 'sleep', 'sleep_squared']]
+            model_poly = LinearRegression()
+            model_poly.fit(X_poly, y_train)
+            mae_poly = mean_absolute_error(y_train, model_poly.predict(X_poly))
             
-            mae_model = mean_absolute_error(y_train, predictions)
-            mae_baseline = mean_absolute_error(y_train, baseline_preds)
-            
-            improvement = 0
-            if mae_baseline > 0:
-                improvement = ((mae_baseline - mae_model) / mae_baseline) * 100
-                
-            # 4. Predict ACTUAL Tomorrow using Today's Data
+            # 4. Determine the Champion (Which model has lower error?)
             latest_day = metrics_df.iloc[-1]
-            X_latest = pd.DataFrame({'TNL': [latest_day['TNL']], 'sleep': [latest_day['sleep']]})
-            tomorrow_pred = max(0, model.predict(X_latest)[0]) # Prevent negative tics
             
-            w_tnl = model.coef_[0]
-            w_sleep = model.coef_[1]
-            intercept = model.intercept_
-            
-            confidence = "High 🟢" if improvement > 20 else "Moderate 🟡" if improvement > 0 else "Low 🔴"
-            
-            forecast_summary = f"Predicted Tics: {tomorrow_pred:.1f} | Confidence: {confidence}"
-            forecast_equation = f"Tomorrow's Tics = ({w_tnl:.2f} × TNL) + ({w_sleep:.2f} × Sleep) + {intercept:.2f}"
-            
-            if improvement > 0:
-                forecast_evaluation = f"Our predictive model reduced forecasting error by {improvement:.1f}% compared to a simple baseline moving average (MAE: {mae_model:.2f} vs {mae_baseline:.2f})."
+            if mae_poly < mae_linear:
+                # Polynomial Won
+                X_latest = pd.DataFrame({'TNL': [latest_day['TNL']], 'sleep': [latest_day['sleep']], 'sleep_squared': [latest_day['sleep'] ** 2]})
+                tomorrow_pred = max(0, model_poly.predict(X_latest)[0])
+                
+                finding = f"Polynomial models outperformed linear models (MAE {mae_poly:.2f} vs {mae_linear:.2f}), suggesting non-linear biological relationships."
+                forecast_equation = f"Tics = ({model_poly.coef_[0]:.2f}×TNL) + ({model_poly.coef_[1]:.2f}×Sleep) + ({model_poly.coef_[2]:.2f}×Sleep²) + {model_poly.intercept_:.2f}"
+                
             else:
-                forecast_evaluation = f"Model is still learning your baseline. Current Error (MAE): {mae_model:.2f}."
+                # Linear Won
+                X_latest = pd.DataFrame({'TNL': [latest_day['TNL']], 'sleep': [latest_day['sleep']]})
+                tomorrow_pred = max(0, model_linear.predict(X_latest)[0])
+                
+                finding = f"Linear models outperformed polynomial models (MAE {mae_linear:.2f} vs {mae_poly:.2f}), suggesting symptoms scale directly with load."
+                forecast_equation = f"Tics = ({model_linear.coef_[0]:.2f}×TNL) + ({model_linear.coef_[1]:.2f}×Sleep) + {model_linear.intercept_:.2f}"
+            
+            # 5. Format Outputs for Java
+            forecast_summary = f"Predicted Tics: {tomorrow_pred:.1f}"
+            forecast_evaluation = f"**Scientific Finding:** {finding}"
 
         # Original single-variable regression logic
         tnl_values = metrics_df['TNL'].values

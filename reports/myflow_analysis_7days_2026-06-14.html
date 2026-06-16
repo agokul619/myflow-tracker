@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyFlow Analysis Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <div class="max-w-4xl mx-auto bg-white shadow-2xl rounded-xl p-6 sm:p-8">
+        <header class="border-b pb-4 mb-6">
+            <h1 class="text-3xl font-bold text-[#43AA8B]">📊 Your MyFlow Wellness Report</h1>
+            <p class="text-gray-500 mt-1">Generated: 2026-06-14</p>
+        </header>
+
+        <section class="mb-6 p-4 bg-blue-50 border-l-4 border-blue-400 rounded-lg">
+            <h3 class="font-semibold text-blue-900 mb-2">Understanding Your Results</h3>
+            <p class="text-sm text-blue-800 mb-1"><strong>Your Current Load:</strong> 5.0</p>
+            <p class="text-sm text-blue-800"><strong>Your Threshold:</strong> 11.9</p>
+        </section>
+
+        <section class="mb-8 p-4 bg-green-50 border-l-4 border-green-500 rounded-lg">
+            <h2 class="text-xl font-semibold text-green-700 mb-2">GREEN LIGHT</h2>
+            <p class="text-lg text-green-900">✅ <strong>GREEN LIGHT!</strong> Your load and symptoms are stable and within the normal range. Recommendation: <strong>Maintain Momentum.</strong> Your current pacing and coping strategies are effective. Continue with your scheduled goals.</p>
+            <div class="mt-3 text-sm text-green-700">
+                Latest Load: <strong>5.0</strong> | Threshold: <strong>11.9</strong>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">📈 What's Affecting Your Tics?</h2>
+            <div class="bg-gray-100 p-4 rounded-lg">
+                <img src="file:/Users/aditigokul/Documents/GitHub/myflow-tracker/reports/myflow_analysis_7days_2026-06-14_graph.png" alt="Daily Factor Contribution Graph" class="w-full h-auto rounded-md">
+            </div>
+        </section>
+
+        <section class="mb-8 p-4 bg-indigo-50 border-l-4 border-indigo-500 rounded-lg">
+            <h2 class="text-xl font-semibold text-indigo-700 mb-2">📈 Linear Regression Finding</h2>
+            <p class="text-lg text-indigo-900">For every 1-unit increase in Total Negative Load, your tic count increases by 0.57. This model explains 61.4% of your tic variation (R²=0.61).</p>
+            <p class="text-sm text-indigo-600 mt-2">Your tracked factors have a measurable, statistically-defined relationship with your tic count.</p>
+        </section>
+
+        <section class="mb-8 p-6 bg-emerald-50 border-l-4 border-emerald-500 rounded-lg shadow-sm">
+            <h2 class="text-xl font-bold text-emerald-800 mb-2">🔮 Tomorrow's ML Forecast</h2>
+            <p class="text-sm text-emerald-700 mb-4">Using a multiple linear regression model trained on your lagged dataset (predicting tomorrow based on today).</p>
+
+            <div style="background-color: white; padding: 16px; border-radius: 8px; border: 1px solid #a7f3d0; margin-bottom: 12px;">
+                <h3 class="text-2xl font-bold text-emerald-600">Predicted Tics: 5.0</h3>
+            </div>
+
+            <p class="text-xs text-emerald-800 font-mono bg-emerald-100 p-2 rounded inline-block mb-3">Tics = (0.88×TNL) + (8.05×Sleep) + (-0.42×Sleep²) + -36.37</p>
+            <p class="text-sm text-emerald-700"><strong>Model Evaluation:</strong> **Scientific Finding:** Polynomial models outperformed linear models (MAE 1.25 vs 1.95), suggesting non-linear biological relationships.</p>
+        </section>
+
+        <section class="mb-8 p-4 bg-purple-50 border-l-4 border-purple-500 rounded-lg">
+            <h2 class="text-xl font-semibold text-purple-700 mb-4">🛡️ What's Working FOR YOU</h2>
+            <p class="text-sm text-purple-600 mb-4">These are YOUR best protective factors based on YOUR data.</p>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;">
+                <div style="background:white;border-radius:12px;padding:16px;text-align:center;">
+                    <div style="font-size:1.5rem;">🏆</div>
+                    <div style="font-weight:600;font-size:0.9rem;">Nature Walk</div>
+                    <div style="font-size:0.75rem;color:#888;">Your #1 Factor</div>
+                </div>
+                <div style="background:white;border-radius:12px;padding:16px;text-align:center;">
+                    <div style="font-size:1.5rem;font-weight:700;color:#22c55e;">42%</div>
+                    <div style="font-size:0.75rem;color:#888;">Tic Reduction</div>
+                </div>
+                <div style="background:white;border-radius:12px;padding:16px;text-align:center;">
+                    <div style="font-size:1.5rem;font-weight:700;color:#3b82f6;">3.2</div>
+                    <div style="font-size:0.75rem;color:#888;">Avg Tics WITH it</div>
+                </div>
+                <div style="background:white;border-radius:12px;padding:16px;text-align:center;">
+                    <div style="font-size:1.5rem;font-weight:700;color:#ef4444;">5.5</div>
+                    <div style="font-size:0.75rem;color:#888;">Avg Tics WITHOUT</div>
+                </div>
+            </div>
+            <div style="background:white;border-radius:12px;overflow:hidden;">
+                <div style='display:flex;align-items:center;gap:12px;padding:12px;border-bottom:1px solid #f0f0f0;'><span style='font-size:1.2rem;'>🥇</span><div style='flex:1;'><span style='font-weight:600;'>Nature Walk</span><span style='margin-left:8px;background:#22c55e;color:white;padding:2px 8px;border-radius:12px;font-size:0.75rem;'>42% reduction</span></div><span style='color:#888;font-size:0.85rem;'>Used 5x • Avg 3.2 tics with • 5.5 without</span></div><div style='display:flex;align-items:center;gap:12px;padding:12px;border-bottom:1px solid #f0f0f0;'><span style='font-size:1.2rem;'>🥈</span><div style='flex:1;'><span style='font-weight:600;'>Boba with friends</span><span style='margin-left:8px;background:#22c55e;color:white;padding:2px 8px;border-radius:12px;font-size:0.75rem;'>21% reduction</span></div><span style='color:#888;font-size:0.85rem;'>Used 3x • Avg 4.3 tics with • 5.5 without</span></div><div style='display:flex;align-items:center;gap:12px;padding:12px;border-bottom:1px solid #f0f0f0;'><span style='font-size:1.2rem;'>🥉</span><div style='flex:1;'><span style='font-weight:600;'>Yoga</span><span style='margin-left:8px;background:#f97316;color:white;padding:2px 8px;border-radius:12px;font-size:0.75rem;'>9% reduction</span></div><span style='color:#888;font-size:0.85rem;'>Used 5x • Avg 5.0 tics with • 5.5 without</span></div>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-gray-800 mb-2">🌟 Your Best Days (Lowest TNL)</h2>
+            <p class="text-sm text-gray-500 mb-4">These days had the lowest Total Negative Load.</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+                <div style='border:2px solid #f59e0b;border-radius:12px;padding:16px;text-align:center;'><div style='font-size:0.85rem;color:#888;'>2026-06-03</div><div style='font-size:1.8rem;font-weight:700;color:#22c55e;'>2.3</div><div style='font-size:0.8rem;color:#888;'>TNL Score • 7 tics</div><div style='font-size:0.85rem;color:#6366f1;margin-top:4px;'>✨ Yoga</div></div><div style='border:1px solid #e5e7eb;border-radius:12px;padding:16px;text-align:center;'><div style='font-size:0.85rem;color:#888;'>2026-05-30</div><div style='font-size:1.8rem;font-weight:700;color:#22c55e;'>2.5</div><div style='font-size:0.8rem;color:#888;'>TNL Score • 2 tics</div><div style='font-size:0.85rem;color:#6366f1;margin-top:4px;'>✨ Nature Walk</div></div><div style='border:1px solid #e5e7eb;border-radius:12px;padding:16px;text-align:center;'><div style='font-size:0.85rem;color:#888;'>2026-06-06</div><div style='font-size:1.8rem;font-weight:700;color:#22c55e;'>3.7</div><div style='font-size:0.8rem;color:#888;'>TNL Score • 2 tics</div><div style='font-size:0.85rem;color:#6366f1;margin-top:4px;'>✨ Nature Walk</div></div>
+            </div>
+        </section>
+
+        <section class="mb-8 p-4 bg-blue-50 border-l-4 border-blue-400 rounded-lg">
+            <h2 class="text-xl font-semibold text-blue-800 mb-2">😴 How Sleep Affects Your Tics</h2>
+            <p class="text-blue-700 mb-4">✅ You&#39;re averaging 7.4 hours of sleep per night - that&#39;s in the healthy range! Your sleep-tic connection is STRONG (-0.62). More sleep significantly reduces your tics. Your personal sweet spot is around 8.5hrs — tics average 3.0 on those nights vs 8.8 on others — a 193% difference!</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;">
+                <div style="background:white;border-radius:12px;padding:16px;text-align:center;">
+                    <div style="font-size:1.5rem;font-weight:700;color:#3b82f6;">7.4</div>
+                    <div style="font-size:0.75rem;color:#888;">Hours of Sleep Per Night</div>
+                </div>
+                <div style="background:white;border-radius:12px;padding:16px;text-align:center;">
+                    <div style="font-size:1.5rem;font-weight:700;color:#6366f1;">-0.62</div>
+                    <div style="font-size:0.75rem;color:#888;">Sleep-Tic Connection</div>
+                </div>
+                <div style="background:white;border-radius:12px;padding:16px;text-align:center;">
+                    <div style="font-size:1.5rem;font-weight:700;color:#22c55e;">193%</div>
+                    <div style="font-size:0.75rem;color:#888;">Fewer Tics With Good Sleep</div>
+                </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">
+                <div style="background:#fee2e2;border-radius:12px;padding:16px;text-align:center;">
+                    <div style="font-size:1.5rem;font-weight:700;color:#ef4444;">8.8</div>
+                    <div style="font-size:0.75rem;color:#991b1b;">Average Tics (Bad Sleep)</div>
+                </div>
+                <div style="background:#dcfce7;border-radius:12px;padding:16px;text-align:center;">
+                    <div style="font-size:1.5rem;font-weight:700;color:#16a34a;">3.0</div>
+                    <div style="font-size:0.75rem;color:#166534;">Average Tics (Good Sleep)</div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-8 pt-4 border-t text-center text-gray-500 text-sm">
+            <p>MyFlow Mental Health Tracker | Powered by Python AI</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,339 +1,163 @@
 [
   {
-    "date": "2025-11-02",
-    "symptoms": {"tic_count": 7},
-    "journal": "",
-    "social": {"social_conflict": false},
-    "emotional": {"stress": 4},
-    "custom": [{
-      "level": 1,
-      "effect": -1,
-      "name": "Singing"
-    }],
-    "screen": {"screen_time_hours": 2.2},
-    "cognitive_load": {"study_minutes": 360},
-    "physiological": {"sleep_hours": 8}
-  },
-  {
-    "date": "2025-11-03",
-    "symptoms": {"tic_count": 5},
-    "journal": "",
-    "social": {"social_conflict": false},
-    "emotional": {"stress": 2},
+    "date": "2026-05-25",
+    "symptoms": {"tic_count": 8},
+    "physiological": {"sleep_hours": 5.0},
+    "emotional": {"stress": 7},
+    "cognitive_load": {"study_minutes": 180},
+    "screen": {"screen_time_hours": 4.5},
     "custom": [
-      {
-        "level": 5,
-        "effect": 1,
-        "name": "Taking JAVA test today"
-      },
-      {
-        "level": 2,
-        "effect": -1,
-        "name": "going for car drive w/ parents"
-      }
-    ],
-    "screen": {"screen_time_hours": 2.5},
-    "cognitive_load": {"study_minutes": 660},
-    "physiological": {"sleep_hours": 6.5}
+      {"name": "AP Physics Prep", "level": 4, "effect": 1},
+      {"name": "Yoga", "level": 3, "effect": -1}
+    ]
   },
   {
-    "date": "2025-11-04",
-    "symptoms": {"tic_count": 9},
-    "journal": "",
-    "social": {"social_conflict": false},
-    "emotional": {"stress": 2},
-    "custom": [
-      {
-        "level": 3,
-        "effect": 1,
-        "name": "Studying for Java test"
-      },
-      {
-        "level": 3,
-        "effect": -1,
-        "name": "CHnage of place"
-      }
-    ],
-    "screen": {"screen_time_hours": 1},
-    "cognitive_load": {"study_minutes": 600},
-    "physiological": {"sleep_hours": 7.5}
-  },
-  {
-    "date": "2025-11-05",
-    "symptoms": {"tic_count": 7},
-    "journal": "",
-    "social": {"social_conflict": false},
-    "emotional": {"stress": 5},
-    "custom": [
-      {
-        "level": 5,
-        "effect": -1,
-        "name": "Meditation"
-      },
-      {
-        "level": 2,
-        "effect": -1,
-        "name": "Listening to music"
-      },
-      {
-        "level": 3,
-        "effect": 1,
-        "name": "coding"
-      }
-    ],
-    "screen": {"screen_time_hours": 1},
-    "cognitive_load": {"study_minutes": 360},
-    "physiological": {"sleep_hours": 8}
-  },
-  {
-    "date": "2025-11-06",
-    "symptoms": {"tic_count": 4},
-    "journal": "",
-    "social": {"social_conflict": false},
-    "emotional": {"stress": 6},
-    "custom": [
-      {
-        "level": 5,
-        "effect": -1,
-        "name": "Meditation"
-      },
-      {
-        "level": 2,
-        "effect": -1,
-        "name": "Listening to music"
-      },
-      {
-        "level": 3,
-        "effect": 1,
-        "name": "coding"
-      }
-    ],
-    "screen": {"screen_time_hours": 1},
-    "cognitive_load": {"study_minutes": 600},
-    "physiological": {"sleep_hours": 7.5}
-  },
-  {
-    "date": "2025-11-07",
-    "symptoms": {"tic_count": 5},
-    "journal": "",
-    "social": {"social_conflict": false},
-    "emotional": {"stress": 5},
-    "custom": [
-      {
-        "level": 5,
-        "effect": -1,
-        "name": "Meditation"
-      },
-      {
-        "level": 3,
-        "effect": -1,
-        "name": "Music"
-      }
-    ],
-    "screen": {"screen_time_hours": 1},
-    "cognitive_load": {"study_minutes": 0},
-    "physiological": {"sleep_hours": 7.5}
-  },
-  {
-    "date": "2025-11-08",
-    "symptoms": {"tic_count": 4},
-    "journal": "",
-    "social": {"social_conflict": false},
-    "emotional": {"stress": 3},
-    "custom": [
-      {
-        "level": 5,
-        "effect": -1,
-        "name": "Meditation"
-      },
-      {
-        "level": 3,
-        "effect": -1,
-        "name": "Listening to Music"
-      },
-      {
-        "level": 3,
-        "effect": -1,
-        "name": "grass"
-      },
-      {
-        "level": 5,
-        "effect": -1,
-        "name": "change of place for studying"
-      }
-    ],
-    "screen": {"screen_time_hours": 1},
-    "cognitive_load": {"study_minutes": 420},
-    "physiological": {"sleep_hours": 8}
-  },
-  {
-    "date": "2025-11-09",
-    "symptoms": {"tic_count": 2},
-    "journal": "",
-    "social": {"social_conflict": false},
-    "emotional": {"stress": 2},
-    "custom": [
-      {
-        "level": 3,
-        "effect": -1,
-        "name": "Singing"
-      },
-      {
-        "level": 5,
-        "effect": 1,
-        "name": "Thought loop"
-      }
-    ],
-    "screen": {"screen_time_hours": 1},
-    "cognitive_load": {"study_minutes": 540},
-    "physiological": {"sleep_hours": 7.5}
-  },
-  {
-    "date": "2025-11-11",
-    "symptoms": {"tic_count": 1},
-    "journal": "",
-    "social": {"social_conflict": false},
-    "emotional": {"stress": 5},
-    "custom": [{
-      "level": 2,
-      "effect": -1,
-      "name": "Going for a drive"
-    }],
-    "screen": {"screen_time_hours": 1},
-    "cognitive_load": {"study_minutes": 420},
-    "physiological": {"sleep_hours": 6.5}
-  },
-  {
-    "date": "2025-11-13",
-    "symptoms": {"tic_count": 2},
-    "journal": "",
-    "social": {"social_conflict": false},
-    "emotional": {"stress": 2},
-    "custom": [{
-      "level": 4,
-      "effect": 1,
-      "name": "Coding for test in APCSA"
-    }],
-    "screen": {"screen_time_hours": 1},
-    "cognitive_load": {"study_minutes": 480},
-    "physiological": {"sleep_hours": 7.5}
-  },
-  {
-    "date": "2025-11-15",
+    "date": "2026-05-26",
     "symptoms": {"tic_count": 3},
-    "journal": "",
-    "social": {"social_conflict": false},
-    "emotional": {"stress": 2},
-    "custom": [],
-    "screen": {"screen_time_hours": 1},
-    "cognitive_load": {"study_minutes": 120},
-    "physiological": {"sleep_hours": 7.5}
-  },
-  {
-    "date": "2025-11-19",
-    "symptoms": {"tic_count": 1},
-    "journal": "",
-    "social": {"social_conflict": false},
-    "emotional": {"stress": 5},
-    "custom": [
-      {
-        "level": 3,
-        "effect": 1,
-        "name": "wathcing tv"
-      },
-      {
-        "level": 3,
-        "effect": -1,
-        "name": "going out for a drive"
-      }
-    ],
-    "screen": {"screen_time_hours": 1},
-    "cognitive_load": {"study_minutes": 60},
-    "physiological": {"sleep_hours": 7.5}
-  },
-  {
-    "date": "2026-02-20",
-    "symptoms": {"tic_count": 0},
-    "journal": "",
-    "social": {"social_conflict": false},
-    "emotional": {"stress": 0},
-    "custom": [
-      {
-        "level": 2,
-        "effect": -1,
-        "name": "listening to music"
-      },
-      {
-        "level": 3,
-        "effect": -1,
-        "name": "Yoga and Meditation"
-      },
-      {
-        "level": 5,
-        "effect": 1,
-        "name": "Big exam"
-      },
-      {
-        "level": 2,
-        "effect": 1,
-        "name": "watched instagram for too long"
-      }
-    ],
-    "screen": {"screen_time_hours": 1},
-    "cognitive_load": {"study_minutes": 0},
-    "physiological": {"sleep_hours": 7.5}
-  },
-  {
-    "date": "2026-02-28",
-    "symptoms": {"tic_count": 4},
-    "journal": "",
-    "social": {"social_conflict": false},
-    "emotional": {"stress": 6},
-    "custom": [],
-    "screen": {"screen_time_hours": 2},
-    "cognitive_load": {"study_minutes": 660},
-    "physiological": {"sleep_hours": 7.5}
-  },
-  {
-    "date": "2026-03-01",
-    "symptoms": {"tic_count": 4},
-    "journal": "test today was a holiday ",
-    "social": {"social_conflict": false},
-    "emotional": {"stress": 6},
-    "custom": [
-      {
-        "level": 3,
-        "effect": 1,
-        "name": "big fight with friend"
-      },
-      {
-        "level": 4,
-        "effect": 1,
-        "name": "exam upcoming"
-      },
-      {
-        "level": 3,
-        "effect": -1,
-        "name": "night drive"
-      }
-    ],
-    "screen": {"screen_time_hours": 1},
-    "cognitive_load": {"study_minutes": 540},
-    "physiological": {"sleep_hours": 7.5}
-  },
-  {
-    "date": "2026-06-08",
-    "symptoms": {"tic_count": 5},
-    "journal": "",
-    "social": {"social_conflict": false},
+    "physiological": {"sleep_hours": 8.0},
     "emotional": {"stress": 4},
-    "custom": [{
-      "level": 2,
-      "effect": -1,
-      "name": "sleeping"
-    }],
-    "screen": {"screen_time_hours": 1},
-    "cognitive_load": {"study_minutes": 480},
-    "physiological": {"sleep_hours": 8.5}
+    "cognitive_load": {"study_minutes": 120},
+    "screen": {"screen_time_hours": 3.0},
+    "custom": [
+      {"name": "Nature Walk", "level": 4, "effect": -1}
+    ]
+  },
+  {
+    "date": "2026-05-27",
+    "symptoms": {"tic_count": 6},
+    "physiological": {"sleep_hours": 10.0},
+    "emotional": {"stress": 3},
+    "cognitive_load": {"study_minutes": 60},
+    "screen": {"screen_time_hours": 2.0},
+    "custom": [
+      {"name": "Headache", "level": 3, "effect": 1}
+    ]
+  },
+  {
+    "date": "2026-05-28",
+    "symptoms": {"tic_count": 5},
+    "physiological": {"sleep_hours": 7.5},
+    "emotional": {"stress": 6},
+    "cognitive_load": {"study_minutes": 200},
+    "screen": {"screen_time_hours": 3.5},
+    "custom": [
+      {"name": "AP Physics Prep", "level": 5, "effect": 1},
+      {"name": "Yoga", "level": 4, "effect": -1}
+    ]
+  },
+  {
+    "date": "2026-05-29",
+    "symptoms": {"tic_count": 10},
+    "physiological": {"sleep_hours": 4.0},
+    "emotional": {"stress": 9},
+    "cognitive_load": {"study_minutes": 300},
+    "screen": {"screen_time_hours": 5.0},
+    "custom": [
+      {"name": "FBLA Deadline", "level": 5, "effect": 1}
+    ]
+  },
+  {
+    "date": "2026-05-30",
+    "symptoms": {"tic_count": 2},
+    "physiological": {"sleep_hours": 8.5},
+    "emotional": {"stress": 2},
+    "cognitive_load": {"study_minutes": 45},
+    "screen": {"screen_time_hours": 1.5},
+    "custom": [
+      {"name": "Nature Walk", "level": 5, "effect": -1},
+      {"name": "Boba with friends", "level": 3, "effect": -1}
+    ]
+  },
+  {
+    "date": "2026-05-31",
+    "symptoms": {"tic_count": 3},
+    "physiological": {"sleep_hours": 9.0},
+    "emotional": {"stress": 3},
+    "cognitive_load": {"study_minutes": 90},
+    "screen": {"screen_time_hours": 2.5},
+    "custom": [
+      {"name": "Yoga", "level": 4, "effect": -1}
+    ]
+  },
+  {
+    "date": "2026-06-01",
+    "symptoms": {"tic_count": 8},
+    "physiological": {"sleep_hours": 5.5},
+    "emotional": {"stress": 8},
+    "cognitive_load": {"study_minutes": 150},
+    "screen": {"screen_time_hours": 4.0},
+    "custom": [
+      {"name": "Headache", "level": 4, "effect": 1},
+      {"name": "Boba with friends", "level": 4, "effect": -1}
+    ]
+  },
+  {
+    "date": "2026-06-02",
+    "symptoms": {"tic_count": 4},
+    "physiological": {"sleep_hours": 7.0},
+    "emotional": {"stress": 5},
+    "cognitive_load": {"study_minutes": 120},
+    "screen": {"screen_time_hours": 2.5},
+    "custom": [
+      {"name": "Nature Walk", "level": 4, "effect": -1}
+    ]
+  },
+  {
+    "date": "2026-06-03",
+    "symptoms": {"tic_count": 7},
+    "physiological": {"sleep_hours": 11.0},
+    "emotional": {"stress": 2},
+    "cognitive_load": {"study_minutes": 30},
+    "screen": {"screen_time_hours": 2.0},
+    "custom": [
+      {"name": "Yoga", "level": 5, "effect": -1}
+    ]
+  },
+  {
+    "date": "2026-06-04",
+    "symptoms": {"tic_count": 5},
+    "physiological": {"sleep_hours": 8.0},
+    "emotional": {"stress": 7},
+    "cognitive_load": {"study_minutes": 240},
+    "screen": {"screen_time_hours": 3.0},
+    "custom": [
+      {"name": "AP Physics Prep", "level": 4, "effect": 1},
+      {"name": "Nature Walk", "level": 3, "effect": -1}
+    ]
+  },
+  {
+    "date": "2026-06-05",
+    "symptoms": {"tic_count": 11},
+    "physiological": {"sleep_hours": 4.5},
+    "emotional": {"stress": 9},
+    "cognitive_load": {"study_minutes": 300},
+    "screen": {"screen_time_hours": 6.0},
+    "custom": [
+      {"name": "Java Bug", "level": 5, "effect": 1},
+      {"name": "Headache", "level": 3, "effect": 1}
+    ]
+  },
+  {
+    "date": "2026-06-06",
+    "symptoms": {"tic_count": 2},
+    "physiological": {"sleep_hours": 8.5},
+    "emotional": {"stress": 3},
+    "cognitive_load": {"study_minutes": 60},
+    "screen": {"screen_time_hours": 1.0},
+    "custom": [
+      {"name": "Nature Walk", "level": 5, "effect": -1},
+      {"name": "Yoga", "level": 3, "effect": -1}
+    ]
+  },
+  {
+    "date": "2026-06-07",
+    "symptoms": {"tic_count": 3},
+    "physiological": {"sleep_hours": 7.5},
+    "emotional": {"stress": 4},
+    "cognitive_load": {"study_minutes": 90},
+    "screen": {"screen_time_hours": 2.0},
+    "custom": [
+      {"name": "Boba with friends", "level": 4, "effect": -1}
+    ]
   }
 ]
