@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.List;
@@ -6,136 +7,122 @@ import java.util.Map;
 
 public class InstagramLabelingDialog extends JDialog {
     
-    private Map<String, Integer> categorizedAccounts;
-    private boolean isSaved = false;
+    private final Map<String, JComboBox<String>> accountDropdowns;
+    private boolean saved = false;
+    private Map<String, Integer> translatedWeights;
 
+    /**
+     * Creates the Vibe Check popup to categorize unknown Instagram accounts.
+     * @param parent          The main application window (so the popup centers over it)
+     * @param unknownAccounts A list of Instagram usernames found in the JSON file
+     */
     public InstagramLabelingDialog(Frame parent, List<String> unknownAccounts) {
-        super(parent, "📱 Instagram Data Labeling", true); // true makes it a modal (blocks background)
-        categorizedAccounts = new HashMap<>();
+        super(parent, "Instagram Vibe Check", true); // 'true' makes it modal (blocks other clicks)
         
-        // Default everything to 0 (Neutral) just in case
-        for (String acc : unknownAccounts) {
-            categorizedAccounts.put(acc, 0);
-        }
+        // Window settings
+        setSize(450, 500);
+        setLocationRelativeTo(parent);
+        setLayout(new BorderLayout());
         
-        initializeUI(unknownAccounts);
-    }
+        accountDropdowns = new HashMap<>();
+        translatedWeights = new HashMap<>();
 
-    private void initializeUI(List<String> unknownAccounts) {
-        setSize(600, 500);
-        setLocationRelativeTo(getParent());
-        setLayout(new BorderLayout(10, 10));
-
-        // Header
-        JPanel headerPanel = new JPanel();
-        headerPanel.setLayout(new BoxLayout(headerPanel, BoxLayout.Y_AXIS));
-        headerPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 10, 15));
+        // 1. Header Panel
+        JPanel headerPanel = new JPanel(new BorderLayout());
+        headerPanel.setBorder(new EmptyBorder(15, 15, 15, 15));
+        headerPanel.setBackground(new Color(248, 250, 252)); // Slate 50
         
-        JLabel titleLabel = new JLabel("Tag Your Unknown Accounts");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        
-        JLabel subLabel = new JLabel("What's the usual vibe of these accounts? This helps the ML model learn.");
-        subLabel.setFont(new Font("Arial", Font.PLAIN, 13));
-        subLabel.setForeground(Color.GRAY);
-        
-        headerPanel.add(titleLabel);
-        headerPanel.add(Box.createVerticalStrut(5));
-        headerPanel.add(subLabel);
+        JLabel titleLabel = new JLabel("<html><b>Unknown Accounts Found</b><br><i style='font-size:10px; color:#64748b;'>How do these affect your stress levels?</i></html>");
+        titleLabel.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        headerPanel.add(titleLabel, BorderLayout.CENTER);
         add(headerPanel, BorderLayout.NORTH);
 
-        // The Scrolling List of Accounts
+        // 2. Scrollable List of Accounts
         JPanel listPanel = new JPanel();
         listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.Y_AXIS));
-        listPanel.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
+        listPanel.setBorder(new EmptyBorder(10, 15, 10, 15));
+        listPanel.setBackground(Color.WHITE);
+
+        // The 3 Mathematical Weights
+        String[] options = {
+            "Stressful / FOMO (+1)", 
+            "Neutral / Memes (0)", 
+            "Supportive / Friend (-1)"
+        };
 
         for (String account : unknownAccounts) {
-            listPanel.add(createAccountRow(account));
-            listPanel.add(Box.createVerticalStrut(8));
+            JPanel row = new JPanel(new BorderLayout());
+            row.setBackground(Color.WHITE);
+            row.setBorder(new EmptyBorder(8, 0, 8, 0));
+            row.setMaximumSize(new Dimension(500, 40)); // Keep rows neatly sized
+
+            JLabel accountLabel = new JLabel("@" + account);
+            accountLabel.setFont(new Font("SansSerif", Font.BOLD, 13));
+            accountLabel.setForeground(new Color(15, 23, 42)); // Slate 900
+            
+            JComboBox<String> categoryBox = new JComboBox<>(options);
+            categoryBox.setSelectedIndex(1); // Default to Neutral
+            
+            // Save the dropdown reference so we can check it later
+            accountDropdowns.put(account, categoryBox);
+
+            row.add(accountLabel, BorderLayout.WEST);
+            row.add(categoryBox, BorderLayout.EAST);
+            
+            // Add a subtle line between rows
+            row.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(226, 232, 240))); 
+            
+            listPanel.add(row);
         }
 
         JScrollPane scrollPane = new JScrollPane(listPanel);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane.setBorder(null); // Clean look
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16); // Faster scrolling
         add(scrollPane, BorderLayout.CENTER);
 
-        // Save Button at the bottom
-        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        JButton saveButton = new JButton("💾 Save Tags & Import");
-        saveButton.setFont(new Font("Arial", Font.BOLD, 14));
-        saveButton.setBackground(new Color(67, 170, 139));
-        saveButton.setForeground(Color.WHITE);
-        saveButton.setFocusPainted(false);
-        saveButton.addActionListener(e -> {
-            isSaved = true;
-            dispose(); // Close the window
+        // 3. Footer / Save Button
+        JPanel footerPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        footerPanel.setBorder(new EmptyBorder(10, 15, 10, 15));
+        footerPanel.setBackground(new Color(248, 250, 252));
+
+        JButton saveBtn = new JButton("Save & Apply to Load");
+        saveBtn.setFont(new Font("SansSerif", Font.BOLD, 12));
+        saveBtn.setBackground(new Color(37, 99, 235)); // Blue 600
+        saveBtn.setForeground(Color.WHITE);
+        saveBtn.setOpaque(true);
+        saveBtn.setBorderPainted(false);
+        
+        saveBtn.addActionListener(e -> {
+            // Convert human selections into mathematical weights
+            for (Map.Entry<String, JComboBox<String>> entry : accountDropdowns.entrySet()) {
+                String accountName = entry.getKey();
+                String selection = (String) entry.getValue().getSelectedItem();
+                
+                int mathWeight = 0;
+                if (selection.contains("+1")) {
+                    mathWeight = 1;
+                } else if (selection.contains("-1")) {
+                    mathWeight = -1;
+                }
+                
+                translatedWeights.put(accountName, mathWeight);
+            }
+            
+            saved = true; // Mark as successfully saved!
+            dispose();    // Close the popup, which resumes DailyLogPanel code
         });
-        
-        bottomPanel.add(saveButton);
-        add(bottomPanel, BorderLayout.SOUTH);
+
+        footerPanel.add(saveBtn);
+        add(footerPanel, BorderLayout.SOUTH);
     }
 
-    private JPanel createAccountRow(String accountName) {
-        JPanel row = new JPanel(new BorderLayout(10, 0));
-        row.setMaximumSize(new Dimension(Integer.MAX_VALUE, 45));
-        row.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(220, 220, 220), 1),
-            BorderFactory.createEmptyBorder(8, 10, 8, 10)
-        ));
-
-        // Account Name
-        JLabel nameLabel = new JLabel("@" + accountName);
-        nameLabel.setFont(new Font("Arial", Font.BOLD, 14));
-        row.add(nameLabel, BorderLayout.WEST);
-
-        // Buttons Panel
-        JPanel buttonsPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 5, 0));
-
-        // +1 (Negative Load)
-        JButton btnNegative = new JButton("FOMO / Drama");
-        btnNegative.setBackground(new Color(255, 230, 230)); // Light Red
-        
-        // 0 (Neutral Load)
-        JButton btnNeutral = new JButton("Memes / Updates");
-        btnNeutral.setBackground(new Color(230, 230, 230)); // Gray
-        
-        // -1 (Protective Load)
-        JButton btnPositive = new JButton("Hype / Support");
-        btnPositive.setBackground(new Color(230, 255, 230)); // Light Green
-
-        // Button Group so only one can be visually "active" at a time
-        JButton[] buttons = {btnNegative, btnNeutral, btnPositive};
-        
-        btnNegative.addActionListener(e -> selectButton(buttons, btnNegative, accountName, 1));
-        btnNeutral.addActionListener(e -> selectButton(buttons, btnNeutral, accountName, 0));
-        btnPositive.addActionListener(e -> selectButton(buttons, btnPositive, accountName, -1));
-
-        // Default selection visually is Neutral
-        btnNeutral.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2));
-
-        buttonsPanel.add(btnNegative);
-        buttonsPanel.add(btnNeutral);
-        buttonsPanel.add(btnPositive);
-        
-        row.add(buttonsPanel, BorderLayout.EAST);
-        return row;
-    }
-
-    private void selectButton(JButton[] allButtons, JButton clicked, String account, int score) {
-        // Reset borders for all buttons
-        for (JButton btn : allButtons) {
-            btn.setBorder(UIManager.getBorder("Button.border"));
-        }
-        // Highlight clicked button
-        clicked.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2));
-        
-        // Save the math value in the background
-        categorizedAccounts.put(account, score);
-    }
-
-    public Map<String, Integer> getCategorizedAccounts() {
-        return categorizedAccounts;
-    }
-
+    // DailyLogPanel needs this to check if the user clicked "Save" instead of the "X" button
     public boolean isSaved() {
-        return isSaved;
+        return saved;
+    }
+
+    // Added this so DailyLogPanel can retrieve the math weights once it resumes
+    public Map<String, Integer> getTranslatedWeights() {
+        return translatedWeights;
     }
 }
