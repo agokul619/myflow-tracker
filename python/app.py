@@ -1,4 +1,4 @@
-#app.py
+# app.py
 # Python AI Visualization Microservice for the MyFlow Project
 # ENHANCED: Deep Learning LSTM + Polynomial + Linear Tri-Model Race
 
@@ -264,87 +264,85 @@ def get_visualization():
         return jsonify({"error": f"Internal Server Error: {str(e)}"}), 500
 
 # ---------------------------------------------------------
-# PROTECTIVE FACTORS ENDPOINT (BIRDSHOT ALIASES)
+# PROTECTIVE FACTORS ENDPOINT (Strict Keys & Float Casts)
 # ---------------------------------------------------------
+
 @app.route('/api/protective-factors', methods=['POST'])
 def get_protective_factors():
     if not request.json:
         return jsonify({"error": "Missing JSON payload"}), 400
-
     try:
         data = request.json
-        protective_impacts = defaultdict(int)
+        factor_tics = defaultdict(list)
         factor_days = defaultdict(list)
-        tic_counts = []
+        all_tic_counts = []
 
         for idx, day in enumerate(data):
-            symptoms = day.get('symptoms', {})
-            tics = float(symptoms.get('tic_count', 0)) if isinstance(symptoms, dict) else 0.0
-            tic_counts.append(tics)
-            
+            tics = float(day.get('symptoms', {}).get('tic_count', 0))
+            all_tic_counts.append(tics)
             custom = day.get('custom', [])
-            # Support both Lists and Dictionaries just in case Java formatted it weirdly
             if isinstance(custom, list):
                 for item in custom:
                     if isinstance(item, dict):
                         effect = float(item.get('effect', 0))
                         if effect < 0:
                             name = item.get('name', 'Unknown')
-                            protective_impacts[name] += abs(effect)
-                            factor_days[name].append(idx)
-            elif isinstance(custom, dict):
-                for key, val in custom.items():
-                    effect = float(val.get('effect', val)) if isinstance(val, dict) else float(val)
-                    if effect < 0:
-                        name = val.get('name', key) if isinstance(val, dict) else key
-                        protective_impacts[name] += abs(effect)
-                        factor_days[name].append(idx)
+                            factor_tics[name].append(tics)
+                            factor_days[name].append({'date': day.get('date',''), 'tics': tics})
 
-        top_factor = "Tracking Needed"
-        tic_reduction = 0.0
-        avg_with = 0.0
-        avg_without = 0.0
+        overall_avg = mean(all_tic_counts) if all_tic_counts else 0
 
-        if protective_impacts:
-            best_factor = max(protective_impacts, key=protective_impacts.get)
-            top_factor = best_factor
+        all_factors = []
+        for name, tic_list in factor_tics.items():
+            avg_with = mean(tic_list)
+            reduction = ((overall_avg - avg_with) / overall_avg * 100) if overall_avg > 0 else 0
+            all_factors.append({
+                'name': name,
+                'times_used': len(tic_list),
+                'avg_tics_with': round(avg_with, 1),
+                'avg_tics_without': round(overall_avg, 1),
+                'tic_reduction_pct': round(reduction, 1)
+            })
 
-            with_tics = [tic_counts[i] for i in factor_days[best_factor]]
-            without_tics = [tic_counts[i] for i in range(len(tic_counts)) if i not in factor_days[best_factor]]
+        all_factors.sort(key=lambda x: x['tic_reduction_pct'], reverse=True)
+        best = all_factors[0] if all_factors else None
 
-            if with_tics:
-                avg_with = float(sum(with_tics) / len(with_tics))
-            if without_tics:
-                avg_without = float(sum(without_tics) / len(without_tics))
+        # build top 3 best days
+        daily_tnl = []
+        for day in data:
+            stress = float(day.get('emotional', {}).get('stress', 0))
+            study = float(day.get('cognitive_load', {}).get('study_minutes', 0))
+            norm_study = min(study, 900) / 900 * 10
+            custom = day.get('custom', [])
+            pos = sum(float(f.get('effect',0)) for f in custom if isinstance(f,dict) and float(f.get('effect',0)) > 0)
+            tnl = stress + norm_study + pos
+            prot_factors = [f.get('name','') for f in custom if isinstance(f,dict) and float(f.get('effect',0)) < 0]
+            daily_tnl.append({
+                'date': day.get('date',''),
+                'tnl': round(tnl, 1),
+                'tics': int(day.get('symptoms',{}).get('tic_count', 0)),
+                'factors': prot_factors
+            })
 
-            if avg_without > 0 and avg_with < avg_without:
-                tic_reduction = float(((avg_without - avg_with) / avg_without) * 100.0)
+        top3 = sorted(daily_tnl, key=lambda x: x['tnl'])[:3]
 
-        # SENDING EVERY ALIAS POSSIBLE SO JAVA NEVER MISSES
         return jsonify({
             "success": True,
-            "top_protective_factor": str(top_factor),
-            "top_factor": str(top_factor),
-            "factor_name": str(top_factor),
-            
-            "tic_reduction_percentage": int(round(tic_reduction, 0)),
-            "tic_reduction": int(round(tic_reduction, 0)),
-            "reduction": int(round(tic_reduction, 0)),
-            
-            "avg_tics_with_factor": float(round(avg_with, 1)),
-            "avg_with": float(round(avg_with, 1)),
-            "with_factor": float(round(avg_with, 1)),
-            
-            "avg_tics_without_factor": float(round(avg_without, 1)),
-            "avg_without": float(round(avg_without, 1)),
-            "without_factor": float(round(avg_without, 1))
+            "top_protective_factor": best['name'] if best else "Tracking Needed",
+            "tic_reduction_percentage": float(best['tic_reduction_pct']) if best else 0.0,
+            "avg_tics_with_factor": float(best['avg_tics_with']) if best else 0.0,
+            "avg_tics_without_factor": float(best['avg_tics_without']) if best else 0.0,
+            "all_factors": all_factors[:5],
+            "top_3_best_days": top3
         })
     except Exception as e:
         print(f"Protective Factors Error: {e}")
         return jsonify({"error": str(e)}), 500
 
+
+
 # ---------------------------------------------------------
-# SLEEP ANALYSIS ENDPOINT (BIRDSHOT ALIASES)
+# SLEEP ANALYSIS ENDPOINT (Strict Keys & Float Casts)
 # ---------------------------------------------------------
 @app.route('/api/sleep-analysis', methods=['POST'])
 def get_sleep_analysis():
@@ -377,26 +375,14 @@ def get_sleep_analysis():
         if avg_tics_bad > 0 and avg_tics_good < avg_tics_bad:
             reduction = float(((avg_tics_bad - avg_tics_good) / avg_tics_bad) * 100.0)
 
-        # SENDING EVERY ALIAS POSSIBLE SO JAVA NEVER MISSES
+        # Restored the EXACT keys that successfully passed the 9.2 & 4.0 earlier
         return jsonify({
             "success": True,
             "average_sleep": float(round(avg_sleep, 1)),
-            "avg_sleep": float(round(avg_sleep, 1)),
-            "sleep_hours": float(round(avg_sleep, 1)),
-            
             "sleep_tic_connection": float(round(corr, 2)),
-            "correlation": float(round(corr, 2)),
-            "connection": float(round(corr, 2)),
-            
             "avg_tics_good_sleep": float(round(avg_tics_good, 1)),
-            "good_sleep": float(round(avg_tics_good, 1)),
-            
             "avg_tics_bad_sleep": float(round(avg_tics_bad, 1)),
-            "bad_sleep": float(round(avg_tics_bad, 1)),
-            
-            "fewer_tics_percentage": int(round(reduction, 0)),
-            "tic_reduction": int(round(reduction, 0)),
-            "reduction_percentage": int(round(reduction, 0))
+            "fewer_tics_percentage": float(round(reduction, 0)) # Cast to float!
         })
     except Exception as e:
         print(f"Sleep Analysis Error: {e}")
